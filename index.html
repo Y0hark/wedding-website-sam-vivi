@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mariage de Samuel & Viviana - 1er week-end d'octobre 2026 en Ardèche">
+    <title>Samuel & Viviana | Mariage & Baptême</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">S & V</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link" data-translate="nav.home">Accueil</a>
+                <a href="#about" class="nav-link" data-translate="nav.about">À Propos</a>
+                <a href="#program" class="nav-link" data-translate="nav.program">Programme</a>
+                <a href="#info" class="nav-link" data-translate="nav.info">Informations</a>
+                <a href="#rsvp" class="nav-link" data-translate="nav.rsvp">RSVP</a>
+                <a href="#gallery" class="nav-link" data-translate="nav.gallery">Galerie</a>
+            </div>
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero"
+        style="background-image: url('medias/photo_couple.JPG'); background-size: cover; background-position: center;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text animate-fade-in">
+                <h1 class="hero-names">
+                    <span class="name-first">Samuel</span>
+                    <span class="ampersand">&</span>
+                    <span class="name-second">Viviana</span>
+                </h1>
+                <div class="hero-divider"></div>
+                <p class="hero-subtitle" data-translate="hero.subtitle">Nous nous marions !</p>
+                <p class="hero-date" data-translate="hero.date">1er week-end d'octobre 2026</p>
+                <p class="hero-location" data-translate="hero.location">Ardèche, France</p>
+                <a href="#rsvp" class="cta-button" data-translate="hero.cta">Confirmer ma présence</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="about.title">Notre Histoire</h2>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <p data-translate="about.intro">
+                        Nous sommes ravis de vous inviter à célébrer avec nous notre mariage et le baptême de nos deux
+                        adorables jumelles, Maiëlle et Noa.
+                    </p>
+                    <p data-translate="about.message">
+                        Ce week-end sera une célébration de l'amour, de la famille et de nouveaux départs.
+                        Rejoignez-nous pour trois jours inoubliables dans la magnifique région de l'Ardèche.
+                    </p>
+                    <p data-translate="about.closing">
+                        Nous avons hâte de partager ces moments précieux avec vous, entourés de nature et dans une
+                        ambiance bohème chic qui nous ressemble.
+                    </p>
+                </div>
+                <div class="about-photos animate-on-scroll">
+                    <div class="photo-grid">
+                        <div class="photo-card">
+                            <img src="medias/photo_couple.JPG" alt="Samuel et Viviana">
+                        </div>
+                        <div class="photo-card">
+                            <img src="medias/photos_jumelles.jpg" alt="Maiëlle et Noa">
+                        </div>
+                        <div class="photo-card">
+                            <img src="medias/photo_famille.jpg" alt="Famille">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="program section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="program.title">Programme du Week-end</h2>
+            <div class="timeline">
+                <!-- Friday October 2, 2026 -->
+                <div class="timeline-day-header animate-on-scroll">
+                    <h3 data-translate="program.friday.day">Vendredi 2 octobre 2026</h3>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">👋</span> <span
+                                    data-translate="program.friday.welcome.title">Accueil invités</span></h3>
+                            <span class="timeline-date">15h-17h</span>
+                        </div>
+                        <p data-translate="program.friday.welcome.desc">Arrivée et installation dans les chalets.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🍖</span> <span data-translate="program.friday.bbq.title">Dîner
+                                    d'essai - Barbecue</span></h3>
+                            <span class="timeline-date">17h-19h</span>
+                        </div>
+                        <p data-translate="program.friday.bbq.desc">Barbecue convivial pour bien commencer le week-end
+                            ensemble.</p>
+                    </div>
+                </div>
+
+                <!-- Saturday October 3, 2026 -->
+                <div class="timeline-day-header animate-on-scroll">
+                    <h3 data-translate="program.saturday.day">Samedi 3 octobre 2026</h3>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">☕</span> <span
+                                    data-translate="program.saturday.breakfast.title">Petit déjeuner</span></h3>
+                            <span class="timeline-date">7h-9h</span>
+                        </div>
+                        <p data-translate="program.saturday.breakfast.desc">Petit déjeuner pour bien commencer la
+                            journée.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">⛪</span> <span
+                                    data-translate="program.saturday.ceremony.title">Messe - Baptême & Mariage</span>
+                            </h3>
+                            <span class="timeline-date">10h30-12h30</span>
+                        </div>
+                        <p data-translate="program.saturday.ceremony.desc">Cérémonie religieuse pour notre mariage et le
+                            baptême de Maiëlle et Noa.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🍲</span> <span
+                                    data-translate="program.saturday.lunch.title">Repas - Plat unique à partager</span>
+                            </h3>
+                            <span class="timeline-date">13h-14h</span>
+                        </div>
+                        <p data-translate="program.saturday.lunch.desc">Déjeuner convivial avec un plat unique à
+                            partager.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🌸</span> <span
+                                    data-translate="program.saturday.flowers.title">Atelier couronnes de fleurs</span>
+                            </h3>
+                            <span class="timeline-date">13h-15h</span>
+                        </div>
+                        <p data-translate="program.saturday.flowers.desc">Créez votre propre couronne de fleurs bohème !
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🏸</span> <span
+                                    data-translate="program.saturday.games.title">Jeux extérieurs</span></h3>
+                            <span class="timeline-date">13h-15h</span>
+                        </div>
+                        <p data-translate="program.saturday.games.desc">Activités et jeux en plein air pour tous les
+                            âges.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🌿</span> <span
+                                    data-translate="program.saturday.secular.title">Cérémonie laïque</span></h3>
+                            <span class="timeline-date">16h-17h</span>
+                        </div>
+                        <p data-translate="program.saturday.secular.desc">Cérémonie laïque intime et personnalisée.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🍹</span> <span
+                                    data-translate="program.saturday.aperitif.title">Apéritif - Vin d'honneur</span>
+                            </h3>
+                            <span class="timeline-date">17h-19h</span>
+                        </div>
+                        <p data-translate="program.saturday.aperitif.desc">Cocktail et vin d'honneur pour célébrer
+                            ensemble.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">📸</span> <span
+                                    data-translate="program.saturday.photobooth.title">Photobooth</span></h3>
+                            <span class="timeline-date">18h-4h</span>
+                        </div>
+                        <p data-translate="program.saturday.photobooth.desc">Stand photo pour immortaliser vos meilleurs
+                            moments !</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🍽️</span> <span
+                                    data-translate="program.saturday.dinner.title">Dîner - Banquet buffet de
+                                    Mariage</span></h3>
+                            <span class="timeline-date">19h-21h</span>
+                        </div>
+                        <p data-translate="program.saturday.dinner.desc">Grand banquet buffet pour le dîner de mariage.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">❓</span> <span
+                                    data-translate="program.saturday.party.title">Jeux et Bal</span></h3>
+                            <span class="timeline-date" data-translate="program.saturday.party.time">Soirée</span>
+                        </div>
+                        <p data-translate="program.saturday.party.desc">Jeux, animations et soirée dansante toute la
+                            nuit !</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🔥</span> <span
+                                    data-translate="program.saturday.after.title">Barbecue & marshmallows</span></h3>
+                            <span class="timeline-date" data-translate="program.saturday.after.time">After</span>
+                        </div>
+                        <p data-translate="program.saturday.after.desc">Barbecue nocturne et marshmallows grillés autour
+                            du feu.</p>
+                    </div>
+                </div>
+
+                <!-- Sunday October 4, 2026 -->
+                <div class="timeline-day-header animate-on-scroll">
+                    <h3 data-translate="program.sunday.day">Dimanche 4 octobre 2026</h3>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3><span class="event-icon">🥐</span> <span
+                                    data-translate="program.sunday.brunch.title">Petit déjeuner - Brunch</span></h3>
+                            <span class="timeline-date">7h-11h</span>
+                        </div>
+                        <p data-translate="program.sunday.brunch.desc">Brunch de clôture. Un dernier moment convivial
+                            avant les au revoir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Info Section -->
+    <section id="info" class="info section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="info.title">Informations Pratiques</h2>
+
+            <div class="info-grid">
+                <!-- Dress Code -->
+                <div class="info-card animate-on-scroll">
+                    <div class="info-icon">👗</div>
+                    <h3 data-translate="info.dresscode.title">Thème Vestimentaire</h3>
+                    <p data-translate="info.dresscode.theme"><strong>Bohème Chic</strong></p>
+                    <p data-translate="info.dresscode.warning">Attention : Les nuits en Ardèche peuvent être fraîches en
+                        octobre. Prévoyez des vêtements chauds pour la soirée !</p>
+                </div>
+
+                <!-- Accommodation -->
+                <div class="info-card animate-on-scroll">
+                    <div class="info-icon">🏡</div>
+                    <h3 data-translate="info.accommodation.title">Hébergement</h3>
+                    <p data-translate="info.accommodation.intro">Des chalets sont disponibles sur place :</p>
+                    <ul>
+                        <li data-translate="info.accommodation.friday">Vendredi : 50€/nuit/personne</li>
+                        <li data-translate="info.accommodation.saturday">Samedi : 60€/nuit/personne</li>
+                        <li data-translate="info.accommodation.both">Les deux nuits : 110€/personne</li>
+                    </ul>
+                </div>
+
+                <!-- Bedding -->
+                <div class="info-card animate-on-scroll">
+                    <div class="info-icon">🛏️</div>
+                    <h3 data-translate="info.bedding.title">Draps & Linge</h3>
+                    <p data-translate="info.bedding.warning"><strong>Les draps ne sont pas fournis.</strong></p>
+                    <p data-translate="info.bedding.options">Vous pouvez :</p>
+                    <ul>
+                        <li data-translate="info.bedding.bring">Apporter vos propres draps</li>
+                        <li data-translate="info.bedding.order">Commander sur place :</li>
+                    </ul>
+                    <ul class="bedding-prices">
+                        <li data-translate="info.bedding.large">Grande parure : 16€</li>
+                        <li data-translate="info.bedding.small">Petite parure : 14€</li>
+                        <li data-translate="info.bedding.towel">Linge de bain : 10€</li>
+                    </ul>
+                </div>
+
+                <!-- Weather -->
+                <div class="info-card animate-on-scroll">
+                    <div class="info-icon">🌤️</div>
+                    <h3 data-translate="info.weather.title">Météo en Ardèche</h3>
+                    <p data-translate="info.weather.intro">En octobre en Ardèche :</p>
+                    <ul>
+                        <li data-translate="info.weather.day">Journées : douces et agréables</li>
+                        <li data-translate="info.weather.evening">Soirées : fraîches</li>
+                        <li data-translate="info.weather.night">Nuits : froides</li>
+                    </ul>
+                    <p data-translate="info.weather.advice">Pensez à emporter des couches supplémentaires !</p>
+                </div>
+
+                <!-- Location -->
+                <div class="info-card full-width animate-on-scroll">
+                    <div class="info-icon">📍</div>
+                    <h3 data-translate="info.location.title">Lieu de Réception</h3>
+                    <p data-translate="info.location.name"><strong>Village de gîtes Le Hameau du Prat</strong></p>
+                    <p data-translate="info.location.address">716 Chemin du Prat – 07260 Ribes</p>
+                    <div class="map-placeholder">
+                        <!-- Google Maps embedded for Le Hameau du Prat, Ribes -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.5!2d4.28!3d44.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDQxJzI2LjAiTiA0wrAxNic1MS4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890"
+                            width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="rsvp.title">Confirmer votre présence</h2>
+            <div class="rsvp-content animate-on-scroll">
+                <p class="rsvp-deadline" data-translate="rsvp.deadline">
+                    Merci de confirmer votre présence avant le <strong>28 février 2026</strong>
+                </p>
+                <p class="rsvp-info" data-translate="rsvp.info">
+                    N'oubliez pas de nous indiquer vos besoins en hébergement, draps et vos éventuelles allergies
+                    alimentaires.
+                </p>
+
+                <!-- Notion Form Integration -->
+                <div class="rsvp-form-container">
+                    <div class="rsvp-cta-card">
+                        <div class="rsvp-icon">📋</div>
+                        <h3>Formulaire de Confirmation</h3>
+                        <p class="rsvp-description">
+                            Cliquez sur le bouton ci-dessous pour accéder au formulaire de confirmation de présence.
+                            Indiquez-nous vos besoins en hébergement, draps et vos éventuelles allergies.
+                        </p>
+                        <a href="https://samuel-galiere-digital-solutions.notion.site/2c025a93542b8071bebaf5e5dc879b08?pvs=105"
+                            target="_blank" rel="noopener noreferrer" class="cta-button large">
+                            <span>📝 Remplir le formulaire RSVP</span>
+                            <span class="arrow">→</span>
+                        </a>
+                        <p class="rsvp-note">Le formulaire s'ouvrira dans un nouvel onglet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="gallery.title">Galerie Photos</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="medias/rings.png" alt="Nos alliances">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="medias/chalet.jpg" alt="Chalet">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="medias/gite-hameau-prat1_gd.jpg" alt="Gîte Hameau du Prat">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="medias/salle_reception.jpeg" alt="Salle de réception">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="medias/aire_de_jeu.webp" alt="Aire de jeu">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="medias/photo_famille.jpg" alt="Photo de famille">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="faq.title">Questions Fréquentes</h2>
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span data-translate="faq.q1.question">Puis-je venir accompagné(e) ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faq.q1.answer">Oui ! Veuillez nous indiquer le nom de votre
+                            accompagnant(e)
+                            dans le formulaire RSVP.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span data-translate="faq.q2.question">Y a-t-il un parking sur place ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faq.q2.answer">Oui, un parking gratuit est disponible sur le lieu
+                            de
+                            réception.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span data-translate="faq.q3.question">Les enfants sont-ils les bienvenus ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faq.q3.answer">Absolument ! C'est une célébration familiale.
+                            Merci de nous
+                            indiquer leur nombre et âge dans le formulaire.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span data-translate="faq.q4.question">Que faire si j'ai des restrictions
+                            alimentaires ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faq.q4.answer">Merci de nous indiquer toutes vos allergies ou
+                            restrictions
+                            alimentaires dans le formulaire RSVP.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-names">Samuel & Viviana</div>
+                <p class="footer-date">1er week-end d'octobre 2026 - Ardèche</p>
+                <div class="footer-contact">
+                    <p data-translate="footer.contact">Pour toute question :</p>
+                    <a href="mailto:contact@example.com">samuelgaliere@gmail.com</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 Samuel & Viviana. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for Gallery -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
