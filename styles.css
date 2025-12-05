@@ -634,7 +634,7 @@ a {
 
 .timeline-item:nth-child(odd) {
     left: 0;
-    text-align: right;
+    text-align: left;
 }
 
 .timeline-item:nth-child(even) {
@@ -777,6 +777,7 @@ a {
 .info-card li {
     color: var(--navy-dark);
     line-height: 1.8;
+    text-align: left;
 }
 
 .info-card ul {
@@ -1486,4 +1487,21 @@ a {
     body {
         cursor: auto;
     }
+}
+
+/* FORCE Global Left Align for timeline - User Request Fix */
+.timeline-item,
+.timeline-item:nth-child(odd),
+.timeline-item:nth-child(even) {
+    text-align: left !important;
+}
+
+.timeline-item:nth-child(odd) .timeline-marker {
+    right: -40px;
+    /* Keep marker on right for left-side items */
+}
+
+.timeline-item:nth-child(even) .timeline-marker {
+    left: -40px;
+    /* Keep marker on left for right-side items */
 }
