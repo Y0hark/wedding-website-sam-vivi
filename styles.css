@@ -1278,6 +1278,12 @@ a {
         text-align: left;
     }
 
+    /* Align all timeline cards consistently on mobile */
+    .timeline-day-header {
+        margin-left: 0;
+        text-align: center;
+    }
+
     .timeline-item .timeline-marker {
         left: -40px !important;
     }
@@ -1298,8 +1304,21 @@ a {
         font-size: 2.5rem;
     }
 
+    /* Center navbar logo on mobile */
     .nav-container {
         flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-logo {
+        order: 1;
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .nav-links {
+        order: 2;
     }
 
     .language-toggle {
@@ -1419,6 +1438,36 @@ a {
     /* Simplify CTA button hover on mobile */
     .cta-button:hover {
         transform: translateY(-2px) !important;
+    }
+
+    /* Reduce RSVP CTA size on mobile */
+    .rsvp-cta-card {
+        padding: var(--spacing-md);
+    }
+
+    .rsvp-icon {
+        font-size: 2.5rem;
+    }
+
+    .rsvp-cta-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .rsvp-description {
+        font-size: 0.95rem;
+    }
+
+    .cta-button.large {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        gap: 0.5rem;
+    }
+
+    /* Fix Google Maps iframe on mobile */
+    .map-placeholder iframe {
+        height: 250px;
+        pointer-events: auto;
+        touch-action: auto;
     }
 }
 

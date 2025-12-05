@@ -135,6 +135,12 @@ const translations = {
             title: "Confirmer votre présence",
             deadline: "Merci de confirmer votre présence avant le 28 février 2026",
             info: "N'oubliez pas de nous indiquer vos besoins en hébergement, draps et vos éventuelles allergies alimentaires.",
+            cta: {
+                title: "Formulaire de Confirmation",
+                description: "Cliquez sur le bouton ci-dessous pour accéder au formulaire de confirmation de présence. Indiquez-nous vos besoins en hébergement, draps et vos éventuelles allergies.",
+                button: "📝 Remplir le formulaire RSVP",
+                note: "Le formulaire s'ouvrira dans un nouvel onglet"
+            },
             form: {
                 placeholder: "Formulaire RSVP Notion",
                 instruction: "(Le formulaire Notion sera intégré ici via iframe ou lien externe)",
@@ -300,6 +306,12 @@ const translations = {
             title: "Confirmar su Presencia",
             deadline: "Por favor confirmen su asistencia antes del 28 de febrero de 2026",
             info: "No olviden indicarnos sus necesidades de alojamiento, sábanas y posibles alergias alimentarias.",
+            cta: {
+                title: "Formulario de Confirmación",
+                description: "Haga clic en el botón de abajo para acceder al formulario de confirmación de asistencia. Indíquenos sus necesidades de alojamiento, sábanas y posibles alergias.",
+                button: "📝 Llenar el formulario RSVP",
+                note: "El formulario se abrirá en una nueva pestaña"
+            },
             form: {
                 placeholder: "Formulario RSVP Notion",
                 instruction: "(El formulario de Notion se integrará aquí mediante iframe o enlace externo)",
