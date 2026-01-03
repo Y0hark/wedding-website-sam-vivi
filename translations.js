@@ -18,7 +18,7 @@ const translations = {
             cta: "Confirmer ma présence"
         },
         about: {
-            title: "Notre Histoire",
+            title: "L'événement",
             intro: "Nous sommes ravis de vous inviter à célébrer avec nous notre mariage et le baptême de nos deux adorables jumelles, Maiëlle et Noa.",
             message: "Ce week-end sera une célébration de l'amour, de la famille et de nouveaux départs. Rejoignez-nous pour trois jours inoubliables dans la magnifique région de l'Ardèche.",
             closing: "Nous avons hâte de partager ces moments précieux avec vous, entourés de nature et dans une ambiance bohème chic qui nous ressemble."
@@ -47,12 +47,8 @@ const translations = {
                     desc: "Cérémonie religieuse pour notre mariage et le baptême de Maiëlle et Noa."
                 },
                 lunch: {
-                    title: "Repas - Plat unique à partager",
-                    desc: "Déjeuner convivial avec un plat unique à partager."
-                },
-                flowers: {
-                    title: "Atelier couronnes de fleurs",
-                    desc: "Créez votre propre couronne de fleurs bohème !"
+                    title: "Repas - Burgers du chef",
+                    desc: "Burgers gourmet viande ou poisson."
                 },
                 games: {
                     title: "Jeux extérieurs",
@@ -71,8 +67,8 @@ const translations = {
                     desc: "Stand photo pour immortaliser vos meilleurs moments !"
                 },
                 dinner: {
-                    title: "Dîner - Banquet buffet de Mariage",
-                    desc: "Grand banquet buffet pour le dîner de mariage."
+                    title: "Dîner - Repas à table",
+                    desc: "Dîner convivial servi à table."
                 },
                 party: {
                     title: "Jeux et Bal",
@@ -80,9 +76,9 @@ const translations = {
                     desc: "Jeux, animations et soirée dansante toute la nuit !"
                 },
                 after: {
-                    title: "Barbecue & marshmallows",
+                    title: "After & Marshmallows",
                     time: "After",
-                    desc: "Barbecue nocturne et marshmallows grillés autour du feu."
+                    desc: "After nocturne et marshmallows grillés."
                 }
             },
             sunday: {
@@ -176,7 +172,7 @@ const translations = {
     es: {
         nav: {
             home: "Inicio",
-            about: "Nuestra Historia",
+            about: "El evento",
             program: "Programa",
             info: "Información",
             rsvp: "Confirmar",
@@ -189,8 +185,8 @@ const translations = {
             cta: "Confirmar mi asistencia"
         },
         about: {
-            title: "Nuestra Historia",
-            intro: "Estamos encantados de invitarlos a celebrar con nosotros nuestra boda y el bautizo de nuestras adorables gemelas, Maiëlle y Noa.",
+            title: "El evento",
+            intro: "Estamos encantados de invitarlos a celebrar con nosotros nuestra boda y el bautizo de nuestras hermosas gemelas, Maiëlle y Noa.",
             message: "Este fin de semana será una celebración del amor, la familia y nuevos comienzos. Únanse a nosotros para tres días inolvidables en la hermosa región de Ardèche.",
             closing: "Estamos ansiosos por compartir estos momentos preciosos con ustedes, rodeados de naturaleza y en un ambiente bohemio chic que nos representa."
         },
@@ -203,8 +199,8 @@ const translations = {
                     desc: "Llegada e instalación en las cabañas."
                 },
                 bbq: {
-                    title: "Cena de ensayo - Barbacoa",
-                    desc: "Barbacoa para comenzar bien el fin de semana juntos."
+                    title: "Cena de ensayo - Carnita asada",
+                    desc: "Carnita asada para empenzar bien el fin de semana juntos."
                 }
             },
             saturday: {
@@ -218,12 +214,8 @@ const translations = {
                     desc: "Ceremonia religiosa para nuestra boda y el bautizo de Maiëlle y Noa."
                 },
                 lunch: {
-                    title: "Comida - Plato único para compartir",
-                    desc: "Almuerzo con un plato único para compartir."
-                },
-                flowers: {
-                    title: "Taller de coronas de flores",
-                    desc: "¡Crea tu propia corona de flores bohemia!"
+                    title: "Comida - Burgers del chef",
+                    desc: "Burgers gourmet carne o pescado."
                 },
                 games: {
                     title: "Juegos al aire libre",
@@ -242,8 +234,8 @@ const translations = {
                     desc: "¡Stand de fotos para inmortalizar tus mejores momentos!"
                 },
                 dinner: {
-                    title: "Cena - Banquete buffet de Boda",
-                    desc: "Gran banquete buffet para la cena de boda."
+                    title: "Cena - Servicio a la mesa",
+                    desc: "Cena convivial servida a la mesa."
                 },
                 party: {
                     title: "Juegos y Baile",
@@ -251,9 +243,9 @@ const translations = {
                     desc: "¡Juegos, animaciones y baile toda la noche!"
                 },
                 after: {
-                    title: "Barbacoa y malvaviscos",
+                    title: "After & malvaviscos",
                     time: "After",
-                    desc: "Barbacoa nocturna y malvaviscos tostados alrededor del fuego."
+                    desc: "After & malvaviscos tostados."
                 }
             },
             sunday: {
@@ -282,7 +274,7 @@ const translations = {
                 title: "Sábanas y Ropa de Cama",
                 warning: "Las sábanas no están incluidas.",
                 options: "Pueden:",
-                bring: "Traer sus propias sábanas",
+                bring: "",
                 order: "Pedir en el lugar:",
                 large: "Juego grande: 16€",
                 small: "Juego pequeño: 14€",

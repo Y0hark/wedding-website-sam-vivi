@@ -799,6 +799,30 @@ a {
     font-weight: bold;
 }
 
+/* Color Palette */
+.color-palette {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    margin: var(--spacing-sm) 0;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+    border: 2px solid white;
+    transition: var(--transition-bounce);
+    cursor: pointer;
+}
+
+.color-swatch:hover {
+    transform: scale(1.2);
+    box-shadow: var(--shadow-medium);
+}
+
 .bedding-prices {
     margin-top: var(--spacing-sm);
 }

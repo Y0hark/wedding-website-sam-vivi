@@ -149,7 +149,11 @@ function switchLanguage(lang) {
         const key = element.getAttribute('data-translate');
         const translation = getNestedTranslation(translations[lang], key);
 
-        if (translation) {
+        if (translation === "") {
+            element.style.display = 'none';
+        } else if (translation) {
+            element.style.display = ''; // Reset display property to show element
+
             // Check if element contains HTML tags
             if (element.innerHTML.includes('<')) {
                 // For elements with strong tags, etc.
