@@ -326,6 +326,35 @@
                         <li data-translate="info.accommodation.saturday">Samedi : 60€/nuit/personne</li>
                         <li data-translate="info.accommodation.both">Les deux nuits : 110€/personne</li>
                     </ul>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="https://paypal.me/SGaliere" target="_blank" class="cta-button secondary"
+                            style="padding: 0.5rem 1.5rem; font-size: 0.9rem; animation: none; opacity: 1;">
+                            <span data-translate="info.accommodation.paypal">Régler via PayPal</span>
+                        </a>
+                    </div>
+
+                    <div class="bank-details-container"
+                        style="margin-top: 1.5rem; text-align: center; border-top: 1px solid rgba(27, 58, 95, 0.1); padding-top: 1rem;">
+                        <p class="bank-transfer-title" data-translate="info.accommodation.bank_transfer"
+                            style="font-weight: 600; color: var(--rust); margin-bottom: 0.5rem;">Ou par virement
+                            bancaire :</p>
+                        <div class="bank-info"
+                            style="background: rgba(27, 58, 95, 0.03); padding: 1rem; border-radius: 8px; font-size: 0.9rem; position: relative;">
+                            <div style="margin-bottom: 0.5rem;">
+                                <strong>IBAN:</strong> <span id="iban-text"
+                                    style="font-family: monospace; font-size: 1rem;">FR76 4061 8803 8600 0407 5429
+                                    791</span>
+                                <button id="copy-iban-btn" class="copy-btn" aria-label="Copier IBAN">
+                                    <span class="copy-icon">📋</span>
+                                    <span class="copy-feedback"
+                                        data-translate="info.accommodation.copy_iban">Copier</span>
+                                </button>
+                            </div>
+                            <div>
+                                <strong>BIC:</strong> <span style="font-family: monospace;">BOUS FRPP XXX</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Bedding -->

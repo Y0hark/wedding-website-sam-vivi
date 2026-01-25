@@ -400,6 +400,44 @@ function initCardHoverEffects() {
 }
 
 // ========================================
+// COPY IBAN FUNCTIONALITY
+// ========================================
+function initCopyIBAN() {
+    const copyBtn = document.getElementById('copy-iban-btn');
+    const ibanText = document.getElementById('iban-text');
+
+    if (copyBtn && ibanText) {
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(ibanText.textContent).then(() => {
+                const originalIcon = '📋';
+
+                // Update UI to show success
+                copyBtn.classList.add('copied');
+                copyBtn.querySelector('.copy-icon').textContent = '✅';
+
+                // Get translated "Copied!" text
+                const copiedTextKey = 'info.accommodation.iban_copied';
+                const copiedTranslation = getNestedTranslation(translations[currentLang], copiedTextKey);
+                copyBtn.querySelector('.copy-feedback').textContent = copiedTranslation || 'Copié !';
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.querySelector('.copy-icon').textContent = originalIcon;
+
+                    // Restore original translated text based on current lang
+                    const originalKey = 'info.accommodation.copy_iban';
+                    const originalTranslation = getNestedTranslation(translations[currentLang], originalKey);
+                    copyBtn.querySelector('.copy-feedback').textContent = originalTranslation || 'Copier';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy IBAN: ', err);
+            });
+        });
+    }
+}
+
+// ========================================
 // PERFORMANCE OPTIMIZATION
 // ========================================
 function initPerformanceOptimizations() {
@@ -498,6 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initParallax();
     initLazyLoading();
     initCardHoverEffects();
+    initCopyIBAN();
 
     // Optional features
     // initCountdown(); // Uncomment if you add a countdown element

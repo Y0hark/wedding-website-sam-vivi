@@ -101,7 +101,11 @@ const translations = {
                 intro: "Des chalets sont disponibles sur place :",
                 friday: "Vendredi : 50€/nuit/personne",
                 saturday: "Samedi : 60€/nuit/personne",
-                both: "Les deux nuits : 110€/personne"
+                both: "Les deux nuits : 110€/personne",
+                paypal: "Régler via PayPal",
+                bank_transfer: "Ou par virement bancaire :",
+                copy_iban: "Copier l'IBAN",
+                iban_copied: "IBAN Copié !"
             },
             bedding: {
                 title: "Draps & Linge",
@@ -268,7 +272,11 @@ const translations = {
                 intro: "Hay cabañas disponibles en el lugar:",
                 friday: "Viernes: 50€/noche/persona",
                 saturday: "Sábado: 60€/noche/persona",
-                both: "Las dos noches: 110€/persona"
+                both: "Las dos noches: 110€/persona",
+                paypal: "Pagar vía PayPal",
+                bank_transfer: "O por transferencia bancaria:",
+                copy_iban: "Copiar IBAN",
+                iban_copied: "¡IBAN Copiado!"
             },
             bedding: {
                 title: "Sábanas y Ropa de Cama",
