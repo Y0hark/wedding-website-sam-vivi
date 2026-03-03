@@ -133,7 +133,6 @@ const translations = {
         },
         rsvp: {
             title: "Confirmer votre présence",
-            deadline: "Merci de confirmer votre présence avant le 28 février 2026",
             info: "N'oubliez pas de nous indiquer vos besoins en hébergement, draps et vos éventuelles allergies alimentaires.",
             cta: {
                 title: "Formulaire de Confirmation",
@@ -304,7 +303,6 @@ const translations = {
         },
         rsvp: {
             title: "Confirmar su Presencia",
-            deadline: "Por favor confirmen su asistencia antes del 28 de febrero de 2026",
             info: "No olviden indicarnos sus necesidades de alojamiento, sábanas y posibles alergias alimentarias.",
             cta: {
                 title: "Formulario de Confirmación",

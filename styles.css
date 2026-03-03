@@ -817,11 +817,7 @@ a {
     text-align: center;
 }
 
-.rsvp-deadline {
-    font-size: 1.3rem;
-    color: var(--rust);
-    margin-bottom: var(--spacing-md);
-}
+
 
 .rsvp-info {
     font-size: 1.1rem;
