@@ -68,7 +68,7 @@
     <!-- About Section -->
     <section id="about" class="about section-padding">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-translate="about.title">Notre Histoire</h2>
+            <h2 class="section-title animate-on-scroll" data-translate="about.title">L'événement</h2>
             <div class="about-content">
                 <div class="about-text animate-on-scroll">
                     <p data-translate="about.intro">
@@ -186,20 +186,6 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3><span class="event-icon">🌸</span> <span
-                                    data-translate="program.saturday.flowers.title">Atelier couronnes de fleurs</span>
-                            </h3>
-                            <span class="timeline-date">14h-16h</span>
-                        </div>
-                        <p data-translate="program.saturday.flowers.desc">Créez votre propre couronne de fleurs bohème !
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
                             <h3><span class="event-icon">🏸</span> <span
                                     data-translate="program.saturday.games.title">Jeux extérieurs</span></h3>
                             <span class="timeline-date">14h-16h</span>
@@ -266,7 +252,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3><span class="event-icon">❓</span> <span
+                            <h3><span class="event-icon">💃</span> <span
                                     data-translate="program.saturday.party.title">Jeux et Bal</span></h3>
                             <span class="timeline-date" data-translate="program.saturday.party.time">Soirée</span>
                         </div>
@@ -280,10 +266,10 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🔥</span> <span
-                                    data-translate="program.saturday.after.title">Barbecue & marshmallows</span></h3>
+                                    data-translate="program.saturday.after.title">After & Marshmallows</span></h3>
                             <span class="timeline-date" data-translate="program.saturday.after.time">After</span>
                         </div>
-                        <p data-translate="program.saturday.after.desc">Barbecue nocturne et marshmallows grillés.</p>
+                        <p data-translate="program.saturday.after.desc">After nocturne et marshmallows grillés.</p>
                     </div>
                 </div>
 
@@ -319,6 +305,13 @@
                     <div class="info-icon">👗</div>
                     <h3 data-translate="info.dresscode.title">Thème Vestimentaire</h3>
                     <p data-translate="info.dresscode.theme"><strong>Bohème Chic / Automne</strong></p>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background-color: var(--navy-blue);" title="Navy Blue"></div>
+                        <div class="color-swatch" style="background-color: var(--rust);" title="Rust"></div>
+                        <div class="color-swatch" style="background-color: var(--terracotta);" title="Terracotta"></div>
+                        <div class="color-swatch" style="background-color: var(--burgundy);" title="Burgundy"></div>
+                        <div class="color-swatch" style="background-color: var(--sage-green);" title="Sage Green"></div>
+                    </div>
                     <p data-translate="info.dresscode.warning">Attention : Les nuits en Ardèche peuvent être fraîches en
                         octobre. Prévoyez des vêtements chauds pour la soirée !</p>
                 </div>
@@ -333,6 +326,35 @@
                         <li data-translate="info.accommodation.saturday">Samedi : 60€/nuit/personne</li>
                         <li data-translate="info.accommodation.both">Les deux nuits : 110€/personne</li>
                     </ul>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="https://paypal.me/SGaliere" target="_blank" class="cta-button secondary"
+                            style="padding: 0.5rem 1.5rem; font-size: 0.9rem; animation: none; opacity: 1;">
+                            <span data-translate="info.accommodation.paypal">Régler via PayPal</span>
+                        </a>
+                    </div>
+
+                    <div class="bank-details-container"
+                        style="margin-top: 1.5rem; text-align: center; border-top: 1px solid rgba(27, 58, 95, 0.1); padding-top: 1rem;">
+                        <p class="bank-transfer-title" data-translate="info.accommodation.bank_transfer"
+                            style="font-weight: 600; color: var(--rust); margin-bottom: 0.5rem;">Ou par virement
+                            bancaire :</p>
+                        <div class="bank-info"
+                            style="background: rgba(27, 58, 95, 0.03); padding: 1rem; border-radius: 8px; font-size: 0.9rem; position: relative;">
+                            <div style="margin-bottom: 0.5rem;">
+                                <strong>IBAN:</strong> <span id="iban-text"
+                                    style="font-family: monospace; font-size: 1rem;">FR76 4061 8803 8600 0407 5429
+                                    791</span>
+                                <button id="copy-iban-btn" class="copy-btn" aria-label="Copier IBAN">
+                                    <span class="copy-icon">📋</span>
+                                    <span class="copy-feedback"
+                                        data-translate="info.accommodation.copy_iban">Copier</span>
+                                </button>
+                            </div>
+                            <div>
+                                <strong>BIC:</strong> <span style="font-family: monospace;">BOUS FRPP XXX</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Bedding -->

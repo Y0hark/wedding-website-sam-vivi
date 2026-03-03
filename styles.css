@@ -799,6 +799,57 @@ a {
     font-weight: bold;
 }
 
+/* Copy Button Styles */
+.copy-btn {
+    background: white;
+    border: 1px solid var(--navy-blue);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--navy-blue);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.copy-btn:hover {
+    background: var(--navy-blue);
+    color: white;
+}
+
+.copy-btn.copied {
+    background: var(--sage-green);
+    border-color: var(--sage-green);
+    color: white;
+}
+
+/* Color Palette */
+.color-palette {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    margin: var(--spacing-sm) 0;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+    border: 2px solid white;
+    transition: var(--transition-bounce);
+    cursor: pointer;
+}
+
+.color-swatch:hover {
+    transform: scale(1.2);
+    box-shadow: var(--shadow-medium);
+}
+
 .bedding-prices {
     margin-top: var(--spacing-sm);
 }
