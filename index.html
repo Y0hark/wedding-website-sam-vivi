@@ -31,6 +31,7 @@
                 <a href="#home" class="nav-link" data-translate="nav.home">Accueil</a>
                 <a href="#about" class="nav-link" data-translate="nav.about">À Propos</a>
                 <a href="#program" class="nav-link" data-translate="nav.program">Programme</a>
+                <a href="#venues" class="nav-link" data-translate="nav.venues">Lieux</a>
                 <a href="#info" class="nav-link" data-translate="nav.info">Informations</a>
                 <a href="#rsvp" class="nav-link" data-translate="nav.rsvp">RSVP</a>
                 <a href="#gallery" class="nav-link" data-translate="nav.gallery">Galerie</a>
@@ -57,7 +58,13 @@
                 <p class="hero-subtitle" data-translate="hero.subtitle">Nous nous marions !</p>
                 <p class="hero-date" data-translate="hero.date">1er week-end d'octobre 2026</p>
                 <p class="hero-location" data-translate="hero.location">Ardèche, France</p>
-                <a href="#rsvp" class="cta-button" data-translate="hero.cta">Confirmer ma présence</a>
+                <p class="hero-intro" data-translate="hero.intro">Un week-end pour célébrer notre mariage et le baptême
+                    de nos jumelles, entre cérémonie, fête et retrouvailles.</p>
+                <div class="hero-actions">
+                    <a href="#program" class="cta-button" data-translate="hero.cta">Voir le programme</a>
+                    <a href="#rsvp" class="cta-button secondary hero-cta-secondary"
+                        data-translate="hero.cta_secondary">Confirmer ma présence</a>
+                </div>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -105,27 +112,43 @@
     <section id="program" class="program section-padding">
         <div class="container">
             <h2 class="section-title animate-on-scroll" data-translate="program.title">Programme du Week-end</h2>
-            <div class="timeline">
+
+            <!-- Day navigation tabs -->
+            <div class="day-tabs" id="day-tabs" role="tablist" aria-label="Jours du week-end">
+                <button class="day-tab" data-day-filter="friday" role="tab" aria-selected="false"
+                    data-translate="program.tabs.friday">Vendredi</button>
+                <button class="day-tab active" data-day-filter="saturday" role="tab" aria-selected="true"
+                    data-translate="program.tabs.saturday">Samedi</button>
+                <button class="day-tab" data-day-filter="sunday" role="tab" aria-selected="false"
+                    data-translate="program.tabs.sunday">Dimanche</button>
+                <button class="day-tab" data-day-filter="all" role="tab" aria-selected="false"
+                    data-translate="program.tabs.all">Tout le week-end</button>
+            </div>
+
+            <div class="timeline" id="timeline">
                 <!-- Friday October 2, 2026 -->
-                <div class="timeline-day-header animate-on-scroll">
+                <div class="timeline-day-header animate-on-scroll" data-day="friday">
                     <h3 data-translate="program.friday.day">Vendredi 2 octobre 2026</h3>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="friday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="friday-welcome" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">👋</span> <span
                                     data-translate="program.friday.welcome.title">Accueil invités</span></h3>
                             <span class="timeline-date">17h-19h</span>
                         </div>
                         <p data-translate="program.friday.welcome.desc">Arrivée et installation dans les chalets.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="friday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="friday-bbq" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🍖</span> <span data-translate="program.friday.bbq.title">Dîner
                                     d'essai - Barbecue</span></h3>
@@ -133,17 +156,19 @@
                         </div>
                         <p data-translate="program.friday.bbq.desc">Barbecue convivial pour bien commencer le week-end
                             ensemble.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
                 <!-- Saturday October 3, 2026 -->
-                <div class="timeline-day-header animate-on-scroll">
+                <div class="timeline-day-header animate-on-scroll" data-day="saturday">
                     <h3 data-translate="program.saturday.day">Samedi 3 octobre 2026</h3>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-breakfast" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">☕</span> <span
                                     data-translate="program.saturday.breakfast.title">Petit déjeuner</span></h3>
@@ -151,79 +176,95 @@
                         </div>
                         <p data-translate="program.saturday.breakfast.desc">Petit déjeuner pour bien commencer la
                             journée.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item highlight animate-on-scroll">
+                <div class="timeline-item highlight animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-eglise" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">⛪</span> <span
                                     data-translate="program.saturday.ceremony.title">Messe - Baptême & Mariage</span>
                             </h3>
-                            <span class="timeline-date">9h30-11h</span>
+                            <span class="timeline-date">10h30-12h</span>
                         </div>
+                        <p class="timeline-location"><span aria-hidden="true">📍</span> <span
+                                data-translate="program.saturday.ceremony.location">Église Saint-Pierre-ès-Liens</span>
+                        </p>
                         <p data-translate="program.saturday.ceremony.desc">Cérémonie religieuse pour notre mariage et le
                             baptême de Maiëlle et Noa.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-lunch" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🍲</span> <span
                                     data-translate="program.saturday.lunch.title">Repas - Burger gourmet au choix</span>
                             </h3>
-                            <span class="timeline-date">12h-14h</span>
+                            <span class="timeline-date">13h - 14h/14h30</span>
                         </div>
                         <p data-translate="program.saturday.lunch.desc">Déjeuner convivial avec autour d'un burger
                             gourmet au choix (Viande ou Poisson).</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-rest" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
-                            <h3><span class="event-icon">🏸</span> <span
-                                    data-translate="program.saturday.games.title">Jeux extérieurs</span></h3>
-                            <span class="timeline-date">14h-16h</span>
+                            <h3><span class="event-icon">🌤️</span> <span
+                                    data-translate="program.saturday.rest.title">Sieste / Temps libre</span></h3>
+                            <span class="timeline-date">À partir de 14h30 environ</span>
                         </div>
-                        <p data-translate="program.saturday.games.desc">Activités et jeux en plein air pour tous les
-                            âges.</p>
+                        <p data-translate="program.saturday.rest.desc">Moment calme et facultatif : sieste, temps libre
+                            ou jeux en extérieur, avant de se préparer pour la cérémonie laïque de 16h30.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item highlight animate-on-scroll">
+                <div class="timeline-item highlight animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-secular" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🌿</span> <span
                                     data-translate="program.saturday.secular.title">Cérémonie laïque</span></h3>
-                            <span class="timeline-date">16h30-17h30</span>
+                            <span class="timeline-date">16h30 - 17h30/18h</span>
                         </div>
                         <p data-translate="program.saturday.secular.desc">Cérémonie laïque intime et personnalisée.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-aperitif" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🍹</span> <span
                                     data-translate="program.saturday.aperitif.title">Apéritif - Vin d'honneur</span>
                             </h3>
-                            <span class="timeline-date">17h30-19h30</span>
+                            <span class="timeline-date" data-translate="program.saturday.aperitif.time">À l'issue de la
+                                cérémonie — vers 17h30/18h</span>
                         </div>
                         <p data-translate="program.saturday.aperitif.desc">Cocktail et vin d'honneur pour célébrer
                             ensemble.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-photobooth" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">📸</span> <span
                                     data-translate="program.saturday.photobooth.title">Photobooth</span></h3>
@@ -231,12 +272,14 @@
                         </div>
                         <p data-translate="program.saturday.photobooth.desc">Stand photo pour immortaliser vos meilleurs
                             moments !</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-dinner" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🍽️</span> <span
                                     data-translate="program.saturday.dinner.title">Dîner - Repas de mariage</span></h3>
@@ -245,12 +288,14 @@
                         <p data-translate="program.saturday.dinner.desc">Repas de mariage servi à la table. Autour du
                             canard.
                         </p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-party" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">💃</span> <span
                                     data-translate="program.saturday.party.title">Jeux et Bal</span></h3>
@@ -258,29 +303,33 @@
                         </div>
                         <p data-translate="program.saturday.party.desc">Jeux, animations et soirée dansante toute la
                             nuit !</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="saturday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="saturday-after" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🔥</span> <span
                                     data-translate="program.saturday.after.title">After & Marshmallows</span></h3>
                             <span class="timeline-date" data-translate="program.saturday.after.time">After</span>
                         </div>
                         <p data-translate="program.saturday.after.desc">After nocturne et marshmallows grillés.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
                     </div>
                 </div>
 
                 <!-- Sunday October 4, 2026 -->
-                <div class="timeline-day-header animate-on-scroll">
+                <div class="timeline-day-header animate-on-scroll" data-day="sunday">
                     <h3 data-translate="program.sunday.day">Dimanche 4 octobre 2026</h3>
                 </div>
 
-                <div class="timeline-item animate-on-scroll">
+                <div class="timeline-item animate-on-scroll" data-day="sunday">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content" data-event-id="sunday-brunch" tabindex="0" role="button"
+                        aria-haspopup="dialog">
                         <div class="timeline-header">
                             <h3><span class="event-icon">🥐</span> <span
                                     data-translate="program.sunday.brunch.title">Petit déjeuner - Brunch</span></h3>
@@ -288,6 +337,117 @@
                         </div>
                         <p data-translate="program.sunday.brunch.desc">Brunch de clôture, un moment convivial avant les
                             au revoir.</p>
+                        <span class="timeline-details-cta" data-translate="program.details_cta">Voir les détails</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essentials Section -->
+    <section id="essentials" class="essentials section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="essentials.title">À retenir</h2>
+            <p class="essentials-subtitle animate-on-scroll" data-translate="essentials.subtitle">Les essentiels du
+                week-end, à ne surtout pas manquer.</p>
+
+            <div class="essentials-grid">
+                <div class="essential-card animate-on-scroll">
+                    <div class="essential-icon" aria-hidden="true">🎨</div>
+                    <h3 data-translate="essentials.colors.title">Le code couleur du mariage</h3>
+                    <p data-translate="essentials.colors.desc">Une palette bohème chic pour vous inspirer, sans
+                        obligation stricte.</p>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background-color: var(--navy-blue);" title="Navy Blue"></div>
+                        <div class="color-swatch" style="background-color: var(--rust);" title="Rust"></div>
+                        <div class="color-swatch" style="background-color: var(--terracotta);" title="Terracotta"></div>
+                        <div class="color-swatch" style="background-color: var(--burgundy);" title="Burgundy"></div>
+                        <div class="color-swatch" style="background-color: var(--sage-green);" title="Sage Green"></div>
+                    </div>
+                </div>
+
+                <div class="essential-card highlight-card animate-on-scroll">
+                    <div class="essential-icon" aria-hidden="true">🛏️</div>
+                    <h3 data-translate="essentials.sheets.title">Pensez à apporter vos draps</h3>
+                    <p data-translate="essentials.sheets.desc">Les draps ne sont pas fournis dans les chalets. Vous
+                        pouvez aussi en commander sur place (voir Informations Pratiques).</p>
+                </div>
+
+                <div class="essential-card animate-on-scroll">
+                    <div class="essential-icon" aria-hidden="true">🏡</div>
+                    <h3 data-translate="essentials.hameau.title">Le Hameau du Prat, lieu principal</h3>
+                    <p data-translate="essentials.hameau.desc">C'est ici que se déroule l'essentiel du week-end :
+                        accueil, repas, soirée et hébergement.</p>
+                </div>
+
+                <div class="essential-card animate-on-scroll">
+                    <div class="essential-icon" aria-hidden="true">⛪</div>
+                    <h3 data-translate="essentials.eglise.title">L'église, un lieu à part</h3>
+                    <p data-translate="essentials.eglise.desc">La cérémonie religieuse a lieu dans un autre village, à
+                        Banne.</p>
+                </div>
+
+                <div class="essential-card animate-on-scroll">
+                    <div class="essential-icon" aria-hidden="true">🚗</div>
+                    <h3 data-translate="essentials.travelTime.title">Environ 30 minutes de route</h3>
+                    <p data-translate="essentials.travelTime.desc">Comptez environ 30 minutes de route entre le Hameau
+                        du Prat et l'église.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venues Section -->
+    <section id="venues" class="venues section-padding">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" data-translate="venues.title">Lieux</h2>
+            <p class="venues-subtitle animate-on-scroll" data-translate="venues.subtitle">Où se déroule le week-end.
+            </p>
+
+            <div class="venues-wrapper">
+                <div class="venue-card animate-on-scroll">
+                    <span class="venue-tag" data-translate="venues.hameau.tag">Lieu principal</span>
+                    <h3 data-translate="venues.hameau.title">Hameau du Prat</h3>
+                    <p class="venue-address" data-translate="info.location.address">716 Chemin du Prat – 07260 Ribes
+                    </p>
+                    <p data-translate="venues.hameau.eventsLabel">Accueil, repas, sieste, soirée et hébergement se
+                        déroulent ici.</p>
+                    <div class="venue-actions">
+                        <a class="cta-button secondary small" id="hameau-maps-btn" target="_blank"
+                            rel="noopener noreferrer" data-translate="venues.hameau.mapsBtn">Ouvrir dans Google
+                            Maps</a>
+                    </div>
+                    <div class="map-placeholder">
+                        <!-- Google Maps embedded for Le Hameau du Prat, Ribes -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.5!2d4.28!3d44.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDQxJzI2LjAiTiA0wrAxNic1MS4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890"
+                            width="100%" height="220" style="border:0; border-radius: 12px;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="venues-connector animate-on-scroll" aria-hidden="true">
+                    <span class="venues-connector-line"></span>
+                    <span class="venues-connector-label" data-translate="venues.travelConnector">≈ 30 min de
+                        route</span>
+                </div>
+
+                <div class="venue-card animate-on-scroll">
+                    <span class="venue-tag" data-translate="venues.eglise.tag">Cérémonie religieuse</span>
+                    <h3 data-translate="venues.eglise.title">Église Saint-Pierre-ès-Liens</h3>
+                    <p class="venue-address" data-translate="venues.eglise.locationLine">07460 Banne, Ardèche</p>
+                    <p class="venue-travel-time" data-translate="venues.eglise.travelTime">Environ 30 minutes de route
+                        depuis le Hameau du Prat</p>
+                    <p data-translate="venues.eglise.arrivalInfo">Vous nous rejoignez directement pour la cérémonie
+                        religieuse ? Rendez-vous à l'église, aucune étape avant n'est nécessaire.</p>
+                    <div class="venue-actions">
+                        <a class="cta-button secondary small" id="eglise-maps-btn" target="_blank"
+                            rel="noopener noreferrer" data-translate="venues.eglise.mapsBtn">Ouvrir dans Google
+                            Maps</a>
+                        <a class="cta-button secondary small" id="eglise-directions-btn" target="_blank"
+                            rel="noopener noreferrer" data-translate="venues.eglise.directionsBtn">Itinéraire depuis le
+                            Hameau du Prat</a>
                     </div>
                 </div>
             </div>
@@ -387,30 +547,15 @@
                     <p data-translate="info.weather.advice">Pensez à emporter des couches supplémentaires ! Les chalets
                         et lieux intérieurs seront chauffés.</p>
                 </div>
-
-                <!-- Location -->
-                <div class="info-card full-width animate-on-scroll">
-                    <div class="info-icon">📍</div>
-                    <h3 data-translate="info.location.title">Lieu de Réception</h3>
-                    <p data-translate="info.location.name"><strong>Village de gîtes Le Hameau du Prat</strong></p>
-                    <p data-translate="info.location.address">716 Chemin du Prat – 07260 Ribes</p>
-                    <div class="map-placeholder">
-                        <!-- Google Maps embedded for Le Hameau du Prat, Ribes -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.5!2d4.28!3d44.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDQxJzI2LjAiTiA0wrAxNic1MS4wIkU!5e0!3m2!1sfr!2sfr!4v1234567890"
-                            width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen=""
-                            loading="lazy">
-                        </iframe>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- RSVP Section -->
-    <section id="rsvp" class="rsvp section-padding">
+    <section id="rsvp" class="rsvp rsvp-secondary section-padding">
         <div class="container">
-            <h2 class="section-title animate-on-scroll" data-translate="rsvp.title">Confirmer votre présence</h2>
+            <h2 class="section-title small-title animate-on-scroll" data-translate="rsvp.title">Confirmer votre
+                présence</h2>
             <div class="rsvp-content animate-on-scroll">
 
                 <p class="rsvp-info" data-translate="rsvp.info">
@@ -420,7 +565,7 @@
 
                 <!-- Notion Form Integration -->
                 <div class="rsvp-form-container">
-                    <div class="rsvp-cta-card">
+                    <div class="rsvp-cta-card compact">
                         <div class="rsvp-icon">📋</div>
                         <h3 data-translate="rsvp.cta.title">Formulaire de Confirmation</h3>
                         <p class="rsvp-description" data-translate="rsvp.cta.description">
@@ -428,7 +573,7 @@
                             Indiquez-nous vos besoins en hébergement, draps et vos éventuelles allergies.
                         </p>
                         <a href="https://samuel-galiere-digital-solutions.notion.site/2c025a93542b8071bebaf5e5dc879b08?pvs=105"
-                            target="_blank" rel="noopener noreferrer" class="cta-button large">
+                            target="_blank" rel="noopener noreferrer" class="cta-button">
                             <span data-translate="rsvp.cta.button">📝 Remplir le formulaire RSVP</span>
                             <span class="arrow">→</span>
                         </a>
@@ -548,8 +693,49 @@
         <div class="lightbox-caption"></div>
     </div>
 
+    <!-- Event Detail Modal / Bottom Sheet -->
+    <div id="event-modal" class="event-modal" hidden>
+        <div class="event-modal-backdrop" data-modal-close></div>
+        <div class="event-modal-panel" role="dialog" aria-modal="true" aria-labelledby="event-modal-title"
+            tabindex="-1">
+            <button type="button" class="event-modal-close" data-modal-close data-translate-aria="modal.close"
+                aria-label="Fermer">&times;</button>
+            <div class="event-modal-body">
+                <p class="event-modal-day" id="event-modal-day"></p>
+                <h3 class="event-modal-title" id="event-modal-title"></h3>
+                <p class="event-modal-time" id="event-modal-time"></p>
+                <p class="event-modal-desc" id="event-modal-desc"></p>
+
+                <div class="event-modal-location" id="event-modal-location" hidden>
+                    <h4 data-translate="modal.location">Lieu</h4>
+                    <p class="event-modal-location-name" id="event-modal-location-name"></p>
+                    <p class="event-modal-location-address" id="event-modal-location-address"></p>
+                    <p class="event-modal-location-travel" id="event-modal-location-travel"></p>
+                    <div class="event-modal-map-actions">
+                        <a class="cta-button secondary small" id="event-modal-maps-btn" target="_blank"
+                            rel="noopener noreferrer" data-translate="modal.mapsBtn">Ouvrir dans Google Maps</a>
+                        <a class="cta-button secondary small" id="event-modal-directions-btn" target="_blank"
+                            rel="noopener noreferrer" data-translate="modal.directionsBtn" hidden>Itinéraire depuis le
+                            Hameau du Prat</a>
+                    </div>
+                </div>
+
+                <div class="event-modal-consignes" id="event-modal-consignes" hidden>
+                    <h4 data-translate="modal.consignes">À prévoir</h4>
+                    <ul class="event-modal-consignes-list" id="event-modal-consignes-list"></ul>
+                </div>
+
+                <div class="event-modal-assets" id="event-modal-assets" hidden>
+                    <h4 data-translate="modal.assets">À découvrir</h4>
+                    <ul class="event-modal-assets-list" id="event-modal-assets-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="translations.js"></script>
+    <script src="program-data.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -173,6 +173,235 @@ function getNestedTranslation(obj, path) {
 }
 
 // ========================================
+// PROGRAM DAY TABS
+// ========================================
+function initDayTabs() {
+    const tabs = document.querySelectorAll('.day-tab');
+    const dayHeaders = document.querySelectorAll('.timeline-day-header');
+    const items = document.querySelectorAll('.timeline-item');
+
+    if (!tabs.length) return;
+
+    function applyFilter(day) {
+        dayHeaders.forEach(header => {
+            header.hidden = !(day === 'all' || header.dataset.day === day);
+        });
+        items.forEach(item => {
+            item.hidden = !(day === 'all' || item.dataset.day === day);
+        });
+
+        tabs.forEach(tab => {
+            const isActive = tab.dataset.dayFilter === day;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => applyFilter(tab.dataset.dayFilter));
+    });
+
+    // Saturday (wedding day) is shown by default so it's immediately visible
+    applyFilter('saturday');
+}
+
+// ========================================
+// VENUES SECTION - map & directions links
+// ========================================
+function initVenueLinks() {
+    if (typeof VENUES === 'undefined') return;
+
+    const hameauMapsBtn = document.getElementById('hameau-maps-btn');
+    const egliseMapsBtn = document.getElementById('eglise-maps-btn');
+    const egliseDirectionsBtn = document.getElementById('eglise-directions-btn');
+
+    if (hameauMapsBtn) {
+        hameauMapsBtn.href = buildMapsSearchUrl(VENUES.hameau.mapQuery);
+    }
+    if (egliseMapsBtn) {
+        egliseMapsBtn.href = buildMapsSearchUrl(VENUES.eglise.mapQuery);
+    }
+    if (egliseDirectionsBtn) {
+        egliseDirectionsBtn.href = buildDirectionsUrl(VENUES.hameau.mapQuery, VENUES.eglise.mapQuery);
+    }
+}
+
+// ========================================
+// EVENT DETAIL MODAL (interactive timeline)
+// ========================================
+let eventModalLastTrigger = null;
+
+function initEventModal() {
+    if (typeof PROGRAM_EVENTS === 'undefined') return;
+
+    const modal = document.getElementById('event-modal');
+    if (!modal) return;
+
+    const panel = modal.querySelector('.event-modal-panel');
+    const items = document.querySelectorAll('.timeline-content[data-event-id]');
+
+    items.forEach(item => {
+        item.addEventListener('click', () => openEventModal(item));
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+                e.preventDefault();
+                openEventModal(item);
+            }
+        });
+    });
+
+    modal.querySelectorAll('[data-modal-close]').forEach(el => {
+        el.addEventListener('click', closeEventModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (modal.hidden) return;
+
+        if (e.key === 'Escape') {
+            closeEventModal();
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusable = panel.querySelectorAll(
+                'button, a[href], [tabindex]:not([tabindex="-1"])'
+            );
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
+}
+
+function translateOrFallback(key, fallback) {
+    const translation = getNestedTranslation(translations[currentLang], key);
+    return translation || fallback || '';
+}
+
+function openEventModal(triggerEl) {
+    const modal = document.getElementById('event-modal');
+    if (!modal) return;
+
+    eventModalLastTrigger = triggerEl;
+
+    const eventId = triggerEl.dataset.eventId;
+    const eventData = PROGRAM_EVENTS[eventId] || {};
+
+    // Read title / time / short description live from the DOM so this data
+    // is never duplicated between the timeline card and the modal.
+    const titleEl = triggerEl.querySelector('.timeline-header h3');
+    const timeEl = triggerEl.querySelector('.timeline-date');
+    const descEl = triggerEl.querySelector('p:not(.timeline-location)');
+    const dayHeader = triggerEl.closest('.timeline-item')?.dataset.day;
+
+    document.getElementById('event-modal-title').textContent = titleEl ? titleEl.textContent.trim() : '';
+    document.getElementById('event-modal-time').textContent = timeEl ? timeEl.textContent.trim() : '';
+
+    const dayLabelKey = dayHeader ? `program.${dayHeader}.day` : null;
+    document.getElementById('event-modal-day').textContent = dayLabelKey
+        ? translateOrFallback(dayLabelKey, '')
+        : '';
+
+    const detailDesc = eventData.detailDescKey
+        ? translateOrFallback(eventData.detailDescKey, descEl ? descEl.textContent.trim() : '')
+        : (descEl ? descEl.textContent.trim() : '');
+    document.getElementById('event-modal-desc').textContent = detailDesc;
+
+    // Location block
+    const locationBlock = document.getElementById('event-modal-location');
+    const venue = eventData.venueId && typeof VENUES !== 'undefined' ? VENUES[eventData.venueId] : null;
+    if (venue) {
+        document.getElementById('event-modal-location-name').textContent = venue.shortName || venue.name;
+        document.getElementById('event-modal-location-address').textContent = venue.address || '';
+        const travelEl = document.getElementById('event-modal-location-travel');
+        if (venue.travelTimeFromHameau) {
+            travelEl.textContent = venue.travelTimeFromHameau;
+            travelEl.hidden = false;
+        } else {
+            travelEl.hidden = true;
+        }
+
+        const mapsBtn = document.getElementById('event-modal-maps-btn');
+        mapsBtn.href = buildMapsSearchUrl(venue.mapQuery);
+
+        const directionsBtn = document.getElementById('event-modal-directions-btn');
+        if (eventData.showDirectionsFromHameau && typeof VENUES !== 'undefined') {
+            directionsBtn.href = buildDirectionsUrl(VENUES.hameau.mapQuery, venue.mapQuery);
+            directionsBtn.hidden = false;
+        } else {
+            directionsBtn.hidden = true;
+        }
+
+        locationBlock.hidden = false;
+    } else {
+        locationBlock.hidden = true;
+    }
+
+    // Consignes
+    const consignesBlock = document.getElementById('event-modal-consignes');
+    const consignesList = document.getElementById('event-modal-consignes-list');
+    consignesList.innerHTML = '';
+    const consignesKeys = eventData.consignesKeys || [];
+    if (consignesKeys.length) {
+        consignesKeys.forEach(key => {
+            const li = document.createElement('li');
+            const text = translateOrFallback(`${key}.desc`, '') || translateOrFallback(key, '');
+            li.textContent = text;
+            if (text) consignesList.appendChild(li);
+        });
+        consignesBlock.hidden = consignesList.children.length === 0;
+    } else {
+        consignesBlock.hidden = true;
+    }
+
+    // Assets
+    const assetsBlock = document.getElementById('event-modal-assets');
+    const assetsList = document.getElementById('event-modal-assets-list');
+    assetsList.innerHTML = '';
+    const assets = eventData.assets || [];
+    if (assets.length) {
+        assets.forEach(asset => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = asset.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = translateOrFallback(asset.labelKey, asset.labelKey);
+            li.appendChild(link);
+            assetsList.appendChild(li);
+        });
+        assetsBlock.hidden = false;
+    } else {
+        assetsBlock.hidden = true;
+    }
+
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.event-modal-panel').focus();
+}
+
+function closeEventModal() {
+    const modal = document.getElementById('event-modal');
+    if (!modal || modal.hidden) return;
+
+    modal.hidden = true;
+    document.body.style.overflow = '';
+
+    if (eventModalLastTrigger) {
+        eventModalLastTrigger.focus();
+        eventModalLastTrigger = null;
+    }
+}
+
+// ========================================
 // FAQ ACCORDION
 // ========================================
 function initFAQ() {
@@ -441,17 +670,6 @@ function initCopyIBAN() {
 // PERFORMANCE OPTIMIZATION
 // ========================================
 function initPerformanceOptimizations() {
-    // Defer non-critical CSS
-    const styleSheets = document.querySelectorAll('link[rel="stylesheet"]');
-    styleSheets.forEach(sheet => {
-        if (!sheet.hasAttribute('media')) {
-            sheet.setAttribute('media', 'print');
-            sheet.onload = function () {
-                sheet.setAttribute('media', 'all');
-            };
-        }
-    });
-
     // Preload important images
     const heroImages = document.querySelectorAll('.hero img, .about-photos img');
     heroImages.forEach(img => {
@@ -531,6 +749,9 @@ document.addEventListener('DOMContentLoaded', () => {
     detectLanguage();
 
     // Interactive features
+    initDayTabs();
+    initVenueLinks();
+    initEventModal();
     initFAQ();
     initGalleryLightbox();
     initParallax();
