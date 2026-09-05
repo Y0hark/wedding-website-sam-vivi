@@ -45,54 +45,43 @@ function buildDirectionsUrl(originQuery, destinationQuery) {
 const PROGRAM_EVENTS = {
     "friday-welcome": {
         day: "friday",
-        venueId: "hameau",
         consignesKeys: ["essentials.sheets"],
         assets: [
             { labelKey: "assets.discoverChalets", url: "medias/chalet.jpg", type: "image" }
         ]
     },
     "friday-bbq": {
-        day: "friday",
-        venueId: "hameau"
+        day: "friday"
     },
     "saturday-breakfast": {
-        day: "saturday",
-        venueId: "hameau"
+        day: "saturday"
     },
     "saturday-eglise": {
         day: "saturday",
-        venueId: "eglise",
-        showDirectionsFromHameau: true,
         detailDescKey: "modal.egliseDetail"
     },
     "saturday-lunch": {
-        day: "saturday",
-        venueId: "hameau"
+        day: "saturday"
     },
     "saturday-rest": {
         day: "saturday",
-        venueId: "hameau",
         assets: [
             { labelKey: "assets.viewPlayArea", url: "medias/aire_de_jeu.webp", type: "image" }
         ]
     },
     "saturday-secular": {
         day: "saturday",
-        venueId: "hameau",
         consignesKeys: ["essentials.eveningWeather"]
     },
     "saturday-aperitif": {
         day: "saturday",
-        venueId: "hameau",
         consignesKeys: ["essentials.eveningWeather"]
     },
     "saturday-photobooth": {
-        day: "saturday",
-        venueId: "hameau"
+        day: "saturday"
     },
     "saturday-dinner": {
         day: "saturday",
-        venueId: "hameau",
         consignesKeys: ["essentials.eveningWeather"],
         assets: [
             { labelKey: "assets.viewReceptionRoom", url: "medias/salle_reception.jpeg", type: "image" }
@@ -100,16 +89,13 @@ const PROGRAM_EVENTS = {
     },
     "saturday-party": {
         day: "saturday",
-        venueId: "hameau",
         consignesKeys: ["essentials.eveningWeather"]
     },
     "saturday-after": {
-        day: "saturday",
-        venueId: "hameau"
+        day: "saturday"
     },
     "sunday-brunch": {
-        day: "sunday",
-        venueId: "hameau"
+        day: "sunday"
     }
 };
 

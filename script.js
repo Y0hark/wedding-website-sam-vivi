@@ -72,6 +72,36 @@ function initStickyNav() {
 }
 
 // ========================================
+// MOBILE NAVIGATION MENU
+// ========================================
+function initMobileNav() {
+    const toggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (!toggle || !navLinks) return;
+
+    function closeMenu() {
+        navLinks.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        toggle.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 968) closeMenu();
+    });
+}
+
+// ========================================
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // ========================================
 function initSmoothScroll() {
@@ -314,36 +344,6 @@ function openEventModal(triggerEl) {
         ? translateOrFallback(eventData.detailDescKey, descEl ? descEl.textContent.trim() : '')
         : (descEl ? descEl.textContent.trim() : '');
     document.getElementById('event-modal-desc').textContent = detailDesc;
-
-    // Location block
-    const locationBlock = document.getElementById('event-modal-location');
-    const venue = eventData.venueId && typeof VENUES !== 'undefined' ? VENUES[eventData.venueId] : null;
-    if (venue) {
-        document.getElementById('event-modal-location-name').textContent = venue.shortName || venue.name;
-        document.getElementById('event-modal-location-address').textContent = venue.address || '';
-        const travelEl = document.getElementById('event-modal-location-travel');
-        if (venue.travelTimeFromHameau) {
-            travelEl.textContent = venue.travelTimeFromHameau;
-            travelEl.hidden = false;
-        } else {
-            travelEl.hidden = true;
-        }
-
-        const mapsBtn = document.getElementById('event-modal-maps-btn');
-        mapsBtn.href = buildMapsSearchUrl(venue.mapQuery);
-
-        const directionsBtn = document.getElementById('event-modal-directions-btn');
-        if (eventData.showDirectionsFromHameau && typeof VENUES !== 'undefined') {
-            directionsBtn.href = buildDirectionsUrl(VENUES.hameau.mapQuery, venue.mapQuery);
-            directionsBtn.hidden = false;
-        } else {
-            directionsBtn.hidden = true;
-        }
-
-        locationBlock.hidden = false;
-    } else {
-        locationBlock.hidden = true;
-    }
 
     // Consignes
     const consignesBlock = document.getElementById('event-modal-consignes');
@@ -743,6 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Core functionality
     // initCustomCursor(); // Disabled per user feedback - cursor too slow and affects mouse speed
     initStickyNav();
+    initMobileNav();
     initSmoothScroll();
     initScrollReveal();
     initLanguageToggle();

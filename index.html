@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Marck+Script&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
@@ -27,19 +27,23 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">S & V</div>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="#home" class="nav-link" data-translate="nav.home">Accueil</a>
                 <a href="#about" class="nav-link" data-translate="nav.about">À Propos</a>
                 <a href="#program" class="nav-link" data-translate="nav.program">Programme</a>
                 <a href="#venues" class="nav-link" data-translate="nav.venues">Lieux</a>
                 <a href="#info" class="nav-link" data-translate="nav.info">Informations</a>
-                <a href="#rsvp" class="nav-link" data-translate="nav.rsvp">RSVP</a>
                 <a href="#gallery" class="nav-link" data-translate="nav.gallery">Galerie</a>
             </div>
             <div class="language-toggle">
                 <button class="lang-btn active" data-lang="fr">FR</button>
                 <button class="lang-btn" data-lang="es">ES</button>
             </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -62,8 +66,8 @@
                     de nos jumelles, entre cérémonie, fête et retrouvailles.</p>
                 <div class="hero-actions">
                     <a href="#program" class="cta-button" data-translate="hero.cta">Voir le programme</a>
-                    <a href="#rsvp" class="cta-button secondary hero-cta-secondary"
-                        data-translate="hero.cta_secondary">Confirmer ma présence</a>
+                    <a href="#venues" class="cta-button secondary hero-cta-secondary"
+                        data-translate="hero.cta_secondary">Voir les lieux</a>
                 </div>
             </div>
         </div>
@@ -351,22 +355,37 @@
             <p class="essentials-subtitle animate-on-scroll" data-translate="essentials.subtitle">Les essentiels du
                 week-end, à ne surtout pas manquer.</p>
 
-            <div class="essentials-grid">
-                <div class="essential-card animate-on-scroll">
-                    <div class="essential-icon" aria-hidden="true">🎨</div>
-                    <h3 data-translate="essentials.colors.title">Le code couleur du mariage</h3>
-                    <p data-translate="essentials.colors.desc">Une palette bohème chic pour vous inspirer, sans
-                        obligation stricte.</p>
-                    <div class="color-palette">
-                        <div class="color-swatch" style="background-color: var(--navy-blue);" title="Navy Blue"></div>
-                        <div class="color-swatch" style="background-color: var(--rust);" title="Rust"></div>
-                        <div class="color-swatch" style="background-color: var(--terracotta);" title="Terracotta"></div>
-                        <div class="color-swatch" style="background-color: var(--burgundy);" title="Burgundy"></div>
-                        <div class="color-swatch" style="background-color: var(--sage-green);" title="Sage Green"></div>
+            <div class="essential-card highlight-card colors-card animate-on-scroll">
+                <div class="essential-icon" aria-hidden="true">🎨</div>
+                <h3 data-translate="essentials.colors.title">Le code couleur du mariage</h3>
+                <p data-translate="essentials.colors.desc">Une palette bohème chic pour vous inspirer, sans
+                    obligation stricte.</p>
+                <div class="color-palette color-palette-labeled">
+                    <div class="color-palette-item">
+                        <div class="color-swatch" style="background-color: var(--navy-blue);"></div>
+                        <span data-translate="colors.navy">Bleu nuit</span>
+                    </div>
+                    <div class="color-palette-item">
+                        <div class="color-swatch" style="background-color: var(--rust);"></div>
+                        <span data-translate="colors.rust">Rouille</span>
+                    </div>
+                    <div class="color-palette-item">
+                        <div class="color-swatch" style="background-color: var(--terracotta);"></div>
+                        <span data-translate="colors.terracotta">Terracotta</span>
+                    </div>
+                    <div class="color-palette-item">
+                        <div class="color-swatch" style="background-color: var(--burgundy);"></div>
+                        <span data-translate="colors.burgundy">Bordeaux</span>
+                    </div>
+                    <div class="color-palette-item">
+                        <div class="color-swatch" style="background-color: var(--sage-green);"></div>
+                        <span data-translate="colors.sage">Vert sauge</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="essential-card highlight-card animate-on-scroll">
+            <div class="essentials-grid">
+                <div class="essential-card animate-on-scroll">
                     <div class="essential-icon" aria-hidden="true">🛏️</div>
                     <h3 data-translate="essentials.sheets.title">Pensez à apporter vos draps</h3>
                     <p data-translate="essentials.sheets.desc">Les draps ne sont pas fournis dans les chalets. Vous
@@ -465,13 +484,8 @@
                     <div class="info-icon">👗</div>
                     <h3 data-translate="info.dresscode.title">Thème Vestimentaire</h3>
                     <p data-translate="info.dresscode.theme"><strong>Bohème Chic / Automne</strong></p>
-                    <div class="color-palette">
-                        <div class="color-swatch" style="background-color: var(--navy-blue);" title="Navy Blue"></div>
-                        <div class="color-swatch" style="background-color: var(--rust);" title="Rust"></div>
-                        <div class="color-swatch" style="background-color: var(--terracotta);" title="Terracotta"></div>
-                        <div class="color-swatch" style="background-color: var(--burgundy);" title="Burgundy"></div>
-                        <div class="color-swatch" style="background-color: var(--sage-green);" title="Sage Green"></div>
-                    </div>
+                    <p class="dresscode-colors-note" data-translate="info.dresscode.colorsNote">Retrouvez notre
+                        palette de couleurs dans la section "À retenir" ci-dessus.</p>
                     <p data-translate="info.dresscode.warning">Attention : Les nuits en Ardèche peuvent être fraîches en
                         octobre. Prévoyez des vêtements chauds pour la soirée !</p>
                 </div>
@@ -517,6 +531,22 @@
                     </div>
                 </div>
 
+                <!-- Gift / No Cash Registry -->
+                <div class="info-card animate-on-scroll">
+                    <div class="info-icon">🎁</div>
+                    <h3 data-translate="info.gift.title">Pas de cagnotte</h3>
+                    <p data-translate="info.gift.desc">Votre présence est le plus beau des cadeaux ! Nous ne
+                        mettons pas en place de cagnotte, mais si vous souhaitez nous aider à financer ce mariage
+                        (ou nous faire un cadeau), vous pouvez contribuer via PayPal.</p>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="https://paypal.me/SGaliere" target="_blank" rel="noopener noreferrer"
+                            class="cta-button secondary"
+                            style="padding: 0.5rem 1.5rem; font-size: 0.9rem; animation: none; opacity: 1;">
+                            <span data-translate="info.gift.button">Contribuer via PayPal</span>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Bedding -->
                 <div class="info-card animate-on-scroll">
                     <div class="info-icon">🛏️</div>
@@ -546,40 +576,6 @@
                     </ul>
                     <p data-translate="info.weather.advice">Pensez à emporter des couches supplémentaires ! Les chalets
                         et lieux intérieurs seront chauffés.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RSVP Section -->
-    <section id="rsvp" class="rsvp rsvp-secondary section-padding">
-        <div class="container">
-            <h2 class="section-title small-title animate-on-scroll" data-translate="rsvp.title">Confirmer votre
-                présence</h2>
-            <div class="rsvp-content animate-on-scroll">
-
-                <p class="rsvp-info" data-translate="rsvp.info">
-                    N'oubliez pas de nous indiquer vos besoins en hébergement, draps et vos éventuelles allergies
-                    alimentaires.
-                </p>
-
-                <!-- Notion Form Integration -->
-                <div class="rsvp-form-container">
-                    <div class="rsvp-cta-card compact">
-                        <div class="rsvp-icon">📋</div>
-                        <h3 data-translate="rsvp.cta.title">Formulaire de Confirmation</h3>
-                        <p class="rsvp-description" data-translate="rsvp.cta.description">
-                            Cliquez sur le bouton ci-dessous pour accéder au formulaire de confirmation de présence.
-                            Indiquez-nous vos besoins en hébergement, draps et vos éventuelles allergies.
-                        </p>
-                        <a href="https://samuel-galiere-digital-solutions.notion.site/2c025a93542b8071bebaf5e5dc879b08?pvs=105"
-                            target="_blank" rel="noopener noreferrer" class="cta-button">
-                            <span data-translate="rsvp.cta.button">📝 Remplir le formulaire RSVP</span>
-                            <span class="arrow">→</span>
-                        </a>
-                        <p class="rsvp-note" data-translate="rsvp.cta.note">Le formulaire s'ouvrira dans un nouvel
-                            onglet</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -623,9 +619,8 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faq.q1.answer">Oui ! Veuillez nous indiquer le nom de votre
-                            accompagnant(e)
-                            dans le formulaire RSVP.</p>
+                        <p data-translate="faq.q1.answer">Oui ! Merci de nous indiquer le nom de votre
+                            accompagnant(e) en nous contactant directement.</p>
                     </div>
                 </div>
 
@@ -649,7 +644,7 @@
                     <div class="faq-answer">
                         <p data-translate="faq.q3.answer">Absolument ! C'est une célébration familiale.
                             Merci de nous
-                            indiquer leur nombre et âge dans le formulaire.</p>
+                            indiquer leur nombre et âge en nous contactant directement.</p>
                     </div>
                 </div>
 
@@ -662,7 +657,7 @@
                     <div class="faq-answer">
                         <p data-translate="faq.q4.answer">Merci de nous indiquer toutes vos allergies ou
                             restrictions
-                            alimentaires dans le formulaire RSVP.</p>
+                            alimentaires en nous contactant directement.</p>
                     </div>
                 </div>
             </div>
@@ -705,20 +700,6 @@
                 <h3 class="event-modal-title" id="event-modal-title"></h3>
                 <p class="event-modal-time" id="event-modal-time"></p>
                 <p class="event-modal-desc" id="event-modal-desc"></p>
-
-                <div class="event-modal-location" id="event-modal-location" hidden>
-                    <h4 data-translate="modal.location">Lieu</h4>
-                    <p class="event-modal-location-name" id="event-modal-location-name"></p>
-                    <p class="event-modal-location-address" id="event-modal-location-address"></p>
-                    <p class="event-modal-location-travel" id="event-modal-location-travel"></p>
-                    <div class="event-modal-map-actions">
-                        <a class="cta-button secondary small" id="event-modal-maps-btn" target="_blank"
-                            rel="noopener noreferrer" data-translate="modal.mapsBtn">Ouvrir dans Google Maps</a>
-                        <a class="cta-button secondary small" id="event-modal-directions-btn" target="_blank"
-                            rel="noopener noreferrer" data-translate="modal.directionsBtn" hidden>Itinéraire depuis le
-                            Hameau du Prat</a>
-                    </div>
-                </div>
 
                 <div class="event-modal-consignes" id="event-modal-consignes" hidden>
                     <h4 data-translate="modal.consignes">À prévoir</h4>

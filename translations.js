@@ -9,7 +9,6 @@ const translations = {
             program: "Programme",
             venues: "Lieux",
             info: "Informations",
-            rsvp: "RSVP",
             gallery: "Galerie"
         },
         hero: {
@@ -18,7 +17,7 @@ const translations = {
             location: "Ardèche, France",
             intro: "Un week-end pour célébrer notre mariage et le baptême de nos jumelles, entre cérémonie, fête et retrouvailles.",
             cta: "Voir le programme",
-            cta_secondary: "Confirmer ma présence"
+            cta_secondary: "Voir les lieux"
         },
         about: {
             title: "L'événement",
@@ -126,6 +125,13 @@ const translations = {
             },
             eveningWeather: "Les soirées sont fraîches en Ardèche : prévoyez des vêtements chauds."
         },
+        colors: {
+            navy: "Bleu nuit",
+            rust: "Rouille",
+            terracotta: "Terracotta",
+            burgundy: "Bordeaux",
+            sage: "Vert sauge"
+        },
         venues: {
             title: "Lieux",
             subtitle: "Où se déroule le week-end.",
@@ -147,12 +153,9 @@ const translations = {
             travelConnector: "≈ 30 min de route"
         },
         modal: {
-            location: "Lieu",
             consignes: "À prévoir",
             assets: "À découvrir",
             close: "Fermer",
-            mapsBtn: "Ouvrir dans Google Maps",
-            directionsBtn: "Itinéraire depuis le Hameau du Prat",
             egliseDetail: "Cérémonie religieuse pour notre mariage et le baptême de Maiëlle et Noa. Vous nous rejoignez directement ici ? Aucune étape avant n'est nécessaire."
         },
         assets: {
@@ -166,6 +169,7 @@ const translations = {
             dresscode: {
                 title: "Thème Vestimentaire",
                 theme: "Bohème Chic",
+                colorsNote: "Retrouvez notre palette de couleurs dans la section \"À retenir\" ci-dessus.",
                 warning: "Attention : Les nuits en Ardèche peuvent être fraîches en octobre. Prévoyez des vêtements chauds pour la soirée !"
             },
             accommodation: {
@@ -178,6 +182,11 @@ const translations = {
                 bank_transfer: "Ou par virement bancaire :",
                 copy_iban: "Copier l'IBAN",
                 iban_copied: "IBAN Copié !"
+            },
+            gift: {
+                title: "Pas de cagnotte",
+                desc: "Votre présence est le plus beau des cadeaux ! Nous ne mettons pas en place de cagnotte, mais si vous souhaitez nous aider à financer ce mariage (ou nous faire un cadeau), vous pouvez contribuer via PayPal.",
+                button: "Contribuer via PayPal"
             },
             bedding: {
                 title: "Draps & Linge",
@@ -203,21 +212,6 @@ const translations = {
                 address: "716 Chemin du Prat – 07260 Ribes"
             }
         },
-        rsvp: {
-            title: "Confirmer votre présence",
-            info: "N'oubliez pas de nous indiquer vos besoins en hébergement, draps et vos éventuelles allergies alimentaires.",
-            cta: {
-                title: "Formulaire de Confirmation",
-                description: "Cliquez sur le bouton ci-dessous pour accéder au formulaire de confirmation de présence. Indiquez-nous vos besoins en hébergement, draps et vos éventuelles allergies.",
-                button: "📝 Remplir le formulaire RSVP",
-                note: "Le formulaire s'ouvrira dans un nouvel onglet"
-            },
-            form: {
-                placeholder: "Formulaire RSVP Notion",
-                instruction: "(Le formulaire Notion sera intégré ici via iframe ou lien externe)",
-                button: "Remplir le formulaire RSVP"
-            }
-        },
         gallery: {
             title: "Galerie Photos"
         },
@@ -225,7 +219,7 @@ const translations = {
             title: "Questions Fréquentes",
             q1: {
                 question: "Puis-je venir accompagné(e) ?",
-                answer: "Oui ! Veuillez nous indiquer le nom de votre accompagnant(e) dans le formulaire RSVP."
+                answer: "Oui ! Merci de nous indiquer le nom de votre accompagnant(e) en nous contactant directement."
             },
             q2: {
                 question: "Y a-t-il un parking sur place ?",
@@ -233,11 +227,11 @@ const translations = {
             },
             q3: {
                 question: "Les enfants sont-ils les bienvenus ?",
-                answer: "Absolument ! C'est une célébration familiale. Merci de nous indiquer leur nombre et âge dans le formulaire."
+                answer: "Absolument ! C'est une célébration familiale. Merci de nous indiquer leur nombre et âge en nous contactant directement."
             },
             q4: {
                 question: "Que faire si j'ai des restrictions alimentaires ?",
-                answer: "Merci de nous indiquer toutes vos allergies ou restrictions alimentaires dans le formulaire RSVP."
+                answer: "Merci de nous indiquer toutes vos allergies ou restrictions alimentaires en nous contactant directement."
             }
         },
         footer: {
@@ -251,7 +245,6 @@ const translations = {
             program: "Programa",
             venues: "Lugares",
             info: "Información",
-            rsvp: "Confirmar",
             gallery: "Galería"
         },
         hero: {
@@ -260,7 +253,7 @@ const translations = {
             location: "Ardèche, Francia",
             intro: "Un fin de semana para celebrar nuestra boda y el bautizo de nuestras gemelas, entre ceremonia, fiesta y reencuentros.",
             cta: "Ver el programa",
-            cta_secondary: "Confirmar mi asistencia"
+            cta_secondary: "Ver los lugares"
         },
         about: {
             title: "El evento",
@@ -368,6 +361,13 @@ const translations = {
             },
             eveningWeather: "Las noches son frescas en Ardèche: traigan ropa abrigada."
         },
+        colors: {
+            navy: "Azul marino",
+            rust: "Óxido",
+            terracotta: "Terracota",
+            burgundy: "Vino",
+            sage: "Verde salvia"
+        },
         venues: {
             title: "Lugares",
             subtitle: "Dónde se desarrolla el fin de semana.",
@@ -389,12 +389,9 @@ const translations = {
             travelConnector: "≈ 30 min en coche"
         },
         modal: {
-            location: "Lugar",
             consignes: "A tener en cuenta",
             assets: "Para descubrir",
             close: "Cerrar",
-            mapsBtn: "Abrir en Google Maps",
-            directionsBtn: "Cómo llegar desde el Hameau du Prat",
             egliseDetail: "Ceremonia religiosa para nuestra boda y el bautizo de Maiëlle y Noa. ¿Se reúnen aquí directamente? No es necesario ningún paso previo."
         },
         assets: {
@@ -408,6 +405,7 @@ const translations = {
             dresscode: {
                 title: "Código de Vestimenta",
                 theme: "Bohemio Chic",
+                colorsNote: "Encuentren nuestra paleta de colores en la sección \"A tener en cuenta\" más arriba.",
                 warning: "Atención: Las noches en Ardèche pueden ser frescas en octubre. ¡Traigan ropa abrigada para la noche!"
             },
             accommodation: {
@@ -420,6 +418,11 @@ const translations = {
                 bank_transfer: "O por transferencia bancaria:",
                 copy_iban: "Copiar IBAN",
                 iban_copied: "¡IBAN Copiado!"
+            },
+            gift: {
+                title: "Sin colecta",
+                desc: "¡Su presencia es el mejor de los regalos! No organizamos ninguna colecta, pero si desean ayudarnos a financiar esta boda (o hacernos un regalo), pueden contribuir vía PayPal.",
+                button: "Contribuir vía PayPal"
             },
             bedding: {
                 title: "Sábanas y Ropa de Cama",
@@ -445,21 +448,6 @@ const translations = {
                 address: "716 Chemin du Prat – 07260 Ribes"
             }
         },
-        rsvp: {
-            title: "Confirmar su Presencia",
-            info: "No olviden indicarnos sus necesidades de alojamiento, sábanas y posibles alergias alimentarias.",
-            cta: {
-                title: "Formulario de Confirmación",
-                description: "Haga clic en el botón de abajo para acceder al formulario de confirmación de asistencia. Indíquenos sus necesidades de alojamiento, sábanas y posibles alergias.",
-                button: "📝 Llenar el formulario RSVP",
-                note: "El formulario se abrirá en una nueva pestaña"
-            },
-            form: {
-                placeholder: "Formulario RSVP Notion",
-                instruction: "(El formulario de Notion se integrará aquí mediante iframe o enlace externo)",
-                button: "Llenar el formulario RSVP"
-            }
-        },
         gallery: {
             title: "Galería de Fotos"
         },
@@ -467,7 +455,7 @@ const translations = {
             title: "Preguntas Frecuentes",
             q1: {
                 question: "¿Puedo venir acompañado(a)?",
-                answer: "¡Sí! Por favor indíquenos el nombre de su acompañante en el formulario RSVP."
+                answer: "¡Sí! Por favor indíquenos el nombre de su acompañante contactándonos directamente."
             },
             q2: {
                 question: "¿Hay estacionamiento en el lugar?",
@@ -475,11 +463,11 @@ const translations = {
             },
             q3: {
                 question: "¿Son bienvenidos los niños?",
-                answer: "¡Por supuesto! Es una celebración familiar. Por favor indíquenos su número y edades en el formulario."
+                answer: "¡Por supuesto! Es una celebración familiar. Por favor indíquenos su número y edades contactándonos directamente."
             },
             q4: {
                 question: "¿Qué hacer si tengo restricciones alimentarias?",
-                answer: "Por favor indíquenos todas sus alergias o restricciones alimentarias en el formulario RSVP."
+                answer: "Por favor indíquenos todas sus alergias o restricciones alimentarias contactándonos directamente."
             }
         },
         footer: {
