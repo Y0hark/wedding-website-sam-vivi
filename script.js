@@ -7,6 +7,142 @@
 let currentLang = 'fr';
 
 // ========================================
+// HASH ROUTER (app shell)
+// ========================================
+const ROUTES = ['', 'programme', 'lieux', 'infos', 'plus'];
+
+function currentRoute() {
+    const raw = (location.hash || '#/').replace(/^#\/?/, '');
+    return ROUTES.includes(raw) ? raw : '';
+}
+
+function syncNavbarHeightVar() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    document.documentElement.style.setProperty('--navbar-height', `${navbar.offsetHeight}px`);
+}
+
+function closeMoreSheet() {
+    const sheet = document.getElementById('more-sheet');
+    const backdrop = document.getElementById('more-sheet-backdrop');
+    const toggle = document.getElementById('more-toggle');
+    if (sheet) sheet.hidden = true;
+    if (backdrop) backdrop.hidden = true;
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+}
+
+function renderRoute() {
+    const route = currentRoute();
+
+    document.querySelectorAll('.view').forEach(view => {
+        view.hidden = view.dataset.view !== route;
+    });
+
+    document.querySelectorAll('[data-route]').forEach(link => {
+        const isActive = link.dataset.route === route;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+
+    closeMoreSheet();
+    window.scrollTo(0, 0);
+}
+
+function initRouter() {
+    syncNavbarHeightVar();
+    window.addEventListener('hashchange', renderRoute);
+    window.addEventListener('resize', syncNavbarHeightVar);
+    renderRoute();
+
+    // The router now owns view visibility; drop the pre-paint style used only
+    // to avoid a flash of the home hero on a direct deep link.
+    const prepaintStyle = document.getElementById('prepaint-route-style');
+    if (prepaintStyle) prepaintStyle.remove();
+}
+
+// ========================================
+// "PLUS" BOTTOM SHEET
+// ========================================
+function initMoreSheet() {
+    const toggle = document.getElementById('more-toggle');
+    const sheet = document.getElementById('more-sheet');
+    const backdrop = document.getElementById('more-sheet-backdrop');
+
+    if (!toggle || !sheet || !backdrop) return;
+
+    function openSheet() {
+        sheet.hidden = false;
+        backdrop.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', () => {
+        if (sheet.hidden) {
+            openSheet();
+        } else {
+            closeMoreSheet();
+        }
+    });
+
+    backdrop.addEventListener('click', closeMoreSheet);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !sheet.hidden) {
+            closeMoreSheet();
+            toggle.focus();
+        }
+    });
+
+    sheet.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMoreSheet);
+    });
+}
+
+// ========================================
+// HOME "NEXT HIGHLIGHT" (countdown / status)
+// ========================================
+function initNextHighlight() {
+    const countdownEl = document.getElementById('countdown');
+    const fallbackEl = document.querySelector('.hub-next-fallback');
+    if (!countdownEl) return;
+
+    const weddingStart = new Date('2026-10-02T17:00:00');
+    const eventEnd = new Date('2026-10-04T15:00:00');
+    const fallbackDefault = fallbackEl ? fallbackEl.textContent : '';
+
+    function render() {
+        const now = new Date();
+
+        if (now < weddingStart) {
+            countdownEl.hidden = false;
+            if (fallbackEl) fallbackEl.hidden = true;
+            updateCountdown(countdownEl, weddingStart);
+        } else if (now <= eventEnd) {
+            countdownEl.hidden = true;
+            if (fallbackEl) {
+                fallbackEl.hidden = false;
+                fallbackEl.textContent = getNestedTranslation(translations[currentLang], 'home.next.during')
+                    || fallbackDefault;
+            }
+        } else {
+            countdownEl.hidden = true;
+            if (fallbackEl) {
+                fallbackEl.hidden = false;
+                fallbackEl.textContent = getNestedTranslation(translations[currentLang], 'home.next.after')
+                    || fallbackDefault;
+            }
+        }
+    }
+
+    render();
+    setInterval(render, 1000);
+}
+
+// ========================================
 // CUSTOM CURSOR
 // ========================================
 function initCustomCursor() {
@@ -72,43 +208,20 @@ function initStickyNav() {
 }
 
 // ========================================
-// MOBILE NAVIGATION MENU
-// ========================================
-function initMobileNav() {
-    const toggle = document.getElementById('nav-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    if (!toggle || !navLinks) return;
-
-    function closeMenu() {
-        navLinks.classList.remove('open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-    }
-
-    toggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        toggle.classList.toggle('active', isOpen);
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    navLinks.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 968) closeMenu();
-    });
-}
-
-// ========================================
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // ========================================
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+
+        // Route links (#/programme, #/lieux, ...) are handled by the router, not by scrolling
+        if (href.startsWith('#/')) return;
+        // Ignore bare "#" links
+        if (href === '#') return;
+
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
 
             if (target) {
                 const navbarHeight = document.getElementById('navbar').offsetHeight;
@@ -540,56 +653,39 @@ function initFormValidation() {
 }
 
 // ========================================
-// COUNTDOWN TIMER (Optional)
+// COUNTDOWN TIMER (used by initNextHighlight)
 // ========================================
-function initCountdown() {
-    const weddingDate = new Date('2026-10-03T16:00:00').getTime();
+function updateCountdown(countdownElement, targetDate) {
+    if (!countdownElement) return;
+    const distance = targetDate.getTime() - Date.now();
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
+    if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        if (distance > 0) {
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Update countdown element if it exists
-            const countdownElement = document.getElementById('countdown');
-            if (countdownElement) {
-                countdownElement.innerHTML = `
-                    <div class="countdown-item">
-                        <span class="countdown-number">${days}</span>
-                        <span class="countdown-label">${currentLang === 'fr' ? 'Jours' : 'Días'}</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number">${hours}</span>
-                        <span class="countdown-label">${currentLang === 'fr' ? 'Heures' : 'Horas'}</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number">${minutes}</span>
-                        <span class="countdown-label">${currentLang === 'fr' ? 'Minutes' : 'Minutos'}</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number">${seconds}</span>
-                        <span class="countdown-label">${currentLang === 'fr' ? 'Secondes' : 'Segundos'}</span>
-                    </div>
-                `;
-            }
-        } else {
-            const countdownElement = document.getElementById('countdown');
-            if (countdownElement) {
-                countdownElement.innerHTML = currentLang === 'fr'
-                    ? "C'est aujourd'hui !"
-                    : "¡Es hoy!";
-            }
-        }
+        countdownElement.innerHTML = `
+            <div class="countdown-item">
+                <span class="countdown-number">${days}</span>
+                <span class="countdown-label">${currentLang === 'fr' ? 'Jours' : 'Días'}</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number">${hours}</span>
+                <span class="countdown-label">${currentLang === 'fr' ? 'Heures' : 'Horas'}</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number">${minutes}</span>
+                <span class="countdown-label">${currentLang === 'fr' ? 'Minutes' : 'Minutos'}</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number">${seconds}</span>
+                <span class="countdown-label">${currentLang === 'fr' ? 'Secondes' : 'Segundos'}</span>
+            </div>
+        `;
+    } else {
+        countdownElement.innerHTML = currentLang === 'fr' ? "C'est aujourd'hui !" : "¡Es hoy!";
     }
-
-    // Update every second
-    setInterval(updateCountdown, 1000);
-    updateCountdown(); // Initial call
 }
 
 // ========================================
@@ -687,28 +783,14 @@ function initPerformanceOptimizations() {
 // ACCESSIBILITY ENHANCEMENTS
 // ========================================
 function initAccessibility() {
-    // Add skip to content link
-    const skipLink = document.createElement('a');
-    skipLink.href = '#about';
-    skipLink.className = 'skip-to-content';
-    skipLink.textContent = currentLang === 'fr' ? 'Aller au contenu' : 'Ir al contenido';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: var(--navy-blue);
-        color: white;
-        padding: 8px;
-        z-index: 10000;
-        text-decoration: none;
-    `;
-    skipLink.addEventListener('focus', () => {
-        skipLink.style.top = '0';
-    });
-    skipLink.addEventListener('blur', () => {
-        skipLink.style.top = '-40px';
-    });
-    document.body.insertBefore(skipLink, document.body.firstChild);
+    // Move focus into <main> when the skip link is used (it already exists statically in the HTML)
+    const skipLink = document.querySelector('.skip-to-content');
+    const main = document.getElementById('main');
+    if (skipLink && main) {
+        skipLink.addEventListener('click', () => {
+            main.focus();
+        });
+    }
 
     // Ensure all interactive elements are keyboard accessible
     const interactiveElements = document.querySelectorAll('button, a, [tabindex]');
@@ -740,10 +822,13 @@ function hideLoader() {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🎉 Wedding Website Initialized - Samuel & Viviana');
 
+    // App shell routing (must run before language switch so the right view is visible)
+    initRouter();
+    initMoreSheet();
+
     // Core functionality
     // initCustomCursor(); // Disabled per user feedback - cursor too slow and affects mouse speed
     initStickyNav();
-    initMobileNav();
     initSmoothScroll();
     initScrollReveal();
     initLanguageToggle();
@@ -759,9 +844,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyLoading();
     initCardHoverEffects();
     initCopyIBAN();
+    initNextHighlight();
 
     // Optional features
-    // initCountdown(); // Uncomment if you add a countdown element
     // initFormValidation(); // Uncomment when RSVP form is ready
 
     // Enhancements
@@ -798,13 +883,27 @@ window.addEventListener('resize', () => {
 });
 
 // ========================================
-// SERVICE WORKER FOR PWA (Optional)
+// SERVICE WORKER FOR PWA
 // ========================================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        // Uncomment to enable PWA functionality
-        // navigator.serviceWorker.register('/sw.js')
-        //     .then(reg => console.log('Service Worker registered', reg))
-        //     .catch(err => console.log('Service Worker registration failed', err));
+        // Relative path so it registers correctly under the GitHub Pages sub-path
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => {
+                console.log('Service Worker registered', reg.scope);
+
+                // When a new version has installed, let it take over on the *next*
+                // navigation rather than forcing a silent reload mid-visit.
+                reg.addEventListener('updatefound', () => {
+                    const newWorker = reg.installing;
+                    if (!newWorker) return;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('New content is available and will be used on next visit.');
+                        }
+                    });
+                });
+            })
+            .catch(err => console.log('Service Worker registration failed', err));
     });
 }

@@ -57,6 +57,11 @@
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease;
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* App shell */
+    --nav-bottom-height: 64px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
 }
 
 /* ========================================
@@ -95,6 +100,59 @@ body {
 .cursor-follower {
     display: none;
     /* Disabled - user feedback: too slow and affects mouse speed */
+}
+
+/* ========================================
+   ACCESSIBILITY - SKIP LINK
+   ======================================== */
+.skip-to-content {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    background: var(--navy-blue);
+    color: var(--ivory);
+    padding: 0.8rem 1.2rem;
+    z-index: 10000;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* ========================================
+   APP SHELL / VIEWS
+   ======================================== */
+main {
+    padding-bottom: calc(var(--nav-bottom-height, 64px) + env(safe-area-inset-bottom) + 1rem);
+}
+
+@media (min-width: 969px) {
+    main {
+        padding-bottom: 0;
+    }
+}
+
+.view {
+    animation: viewFadeIn 0.35s ease-out;
+}
+
+@keyframes viewFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Every view except the home hub starts with in-flow content (no full-height hero),
+   so it needs a top offset to clear the fixed navbar. */
+.view:not([data-view=""]) {
+    padding-top: var(--navbar-height, 88px);
 }
 
 /* ========================================
@@ -214,6 +272,7 @@ a {
     font-size: 2.1rem;
     font-weight: 400;
     color: var(--rust);
+    text-decoration: none;
 }
 
 .nav-links {
@@ -240,8 +299,13 @@ a {
     transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
+}
+
+.nav-link.active {
+    color: var(--rust);
 }
 
 .language-toggle {
@@ -312,6 +376,7 @@ a {
 .hero {
     position: relative;
     height: 100vh;
+    height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -546,6 +611,12 @@ a {
     box-shadow: var(--shadow-medium);
     transition: var(--transition-smooth);
     border: 2px solid transparent;
+}
+
+/* The fade-in-on-arrival flourish only makes sense for the hero CTA, seen once on
+   the very first paint. Elsewhere it would re-trigger and hide the button for
+   ~3s every time its view is switched to by the router. */
+.hero .cta-button {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 2.1s forwards;
 }
@@ -699,6 +770,179 @@ a {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* ========================================
+   HOME HUB
+   ======================================== */
+.hub {
+    background: var(--ivory);
+}
+
+.essentials-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm) var(--spacing-md);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg);
+    text-align: center;
+}
+
+.essentials-strip li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy-dark);
+}
+
+.essentials-icon {
+    font-size: 1.1em;
+}
+
+.hub-intro {
+    max-width: 680px;
+    margin: 0 auto var(--spacing-lg);
+    text-align: center;
+}
+
+.hub-intro p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--navy-dark);
+}
+
+.hub-intro p:first-child {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--rust);
+}
+
+/* Next highlight */
+.hub-next {
+    max-width: 480px;
+    margin: 0 auto var(--spacing-lg);
+    text-align: center;
+    background: white;
+    border: 1px solid rgba(27, 58, 95, 0.08);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-soft);
+}
+
+.hub-next-label {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--rust);
+    margin-bottom: var(--spacing-sm);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.countdown:empty {
+    display: none;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 56px;
+}
+
+.countdown-number {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy-blue);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sage-dark);
+    margin-top: 0.2rem;
+}
+
+.hub-next-fallback {
+    font-size: 0.95rem;
+    color: var(--navy-dark);
+    margin-bottom: 0;
+}
+
+/* Shortcuts */
+.hub-shortcuts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+    max-width: 680px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.hub-tile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: white;
+    border: 1px solid rgba(27, 58, 95, 0.08);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+    color: var(--navy-blue);
+}
+
+.hub-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.hub-tile-accent {
+    background: var(--gradient-accent);
+    color: var(--ivory);
+    border-color: transparent;
+}
+
+.hub-tile-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.hub-tile-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.hub-tile-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.hub-tile-desc {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.hub-tile-arrow {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.hub-photos {
+    max-width: 680px;
+    margin: 0 auto;
 }
 
 /* ========================================
@@ -1149,16 +1393,17 @@ a {
 .copy-btn {
     background: white;
     border: 1px solid var(--navy-blue);
-    border-radius: 4px;
-    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.9rem;
     margin-left: 8px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--navy-blue);
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    min-height: 44px;
 }
 
 .copy-btn:hover {
@@ -1234,6 +1479,56 @@ a {
     font-style: italic;
     color: var(--sage-dark);
     font-size: 0.95rem;
+}
+
+/* Second "Informations Pratiques" heading inside the Infos view, right after
+   the "À retenir" essentials grid it now shares a view with. */
+.info-title-spacer {
+    margin-top: var(--spacing-xl);
+}
+
+/* Accommodation payment block */
+.accommodation-payment {
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.bank-details-container {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(27, 58, 95, 0.1);
+    padding-top: 1rem;
+}
+
+.bank-transfer-title {
+    font-weight: 600;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+}
+
+.bank-info {
+    background: rgba(27, 58, 95, 0.03);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+}
+
+.bank-info-row {
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.bank-info-row span {
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+.gift-payment-actions {
+    text-align: center;
+    margin-top: 1.5rem;
 }
 
 /* ========================================
@@ -1442,6 +1737,138 @@ a {
 .faq-answer p {
     color: var(--navy-dark);
     line-height: 1.8;
+}
+
+.faq-section-padding {
+    padding-top: 0;
+}
+
+/* ========================================
+   BOTTOM NAVIGATION (mobile)
+   ======================================== */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 240, 0.98);
+    border-top: 1px solid rgba(27, 58, 95, 0.1);
+    box-shadow: 0 -2px 12px rgba(27, 58, 95, 0.08);
+    padding: 0.35rem 0.5rem calc(0.35rem + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 968px) {
+    .bottom-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+    }
+}
+
+.bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    min-height: 48px;
+    min-width: 44px;
+    background: transparent;
+    border: none;
+    color: var(--navy-blue);
+    font-family: var(--font-sans);
+    cursor: pointer;
+}
+
+.bottom-nav-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.bottom-nav-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+.bottom-nav-item.active,
+.bottom-nav-item[aria-current="page"] {
+    color: var(--rust);
+}
+
+.bottom-nav-more[aria-expanded="true"] {
+    color: var(--rust);
+}
+
+/* "Plus" sheet */
+.more-sheet-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 35, 55, 0.35);
+    z-index: 1001;
+}
+
+.more-sheet-backdrop:not([hidden]) {
+    display: block;
+}
+
+.more-sheet {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: calc(var(--nav-bottom-height) + env(safe-area-inset-bottom) + 0.75rem);
+    z-index: 1002;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-strong);
+    padding: 0.5rem;
+    animation: sheetIn 0.25s ease-out;
+}
+
+.more-sheet:not([hidden]) {
+    display: flex;
+}
+
+@keyframes sheetIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.more-sheet-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    color: var(--navy-blue);
+    font-weight: 600;
+}
+
+.more-sheet-link:hover,
+.more-sheet-link.active {
+    background: rgba(183, 65, 14, 0.08);
+    color: var(--rust);
+}
+
+.more-sheet-lang {
+    justify-content: center;
+    padding: 0.5rem 0 0.25rem;
+    border-top: 1px solid rgba(27, 58, 95, 0.08);
+    margin-top: 0.25rem;
 }
 
 /* ========================================
@@ -1707,6 +2134,11 @@ a {
         padding: var(--spacing-sm) 0;
     }
 
+    .navbar .language-toggle {
+        display: none;
+        /* Duplicated in .more-sheet on mobile to avoid redundant controls */
+    }
+
     .about-content {
         grid-template-columns: 1fr;
     }
@@ -1938,6 +2370,30 @@ a {
     .event-modal-close {
         top: 0.5rem;
         right: 0.5rem;
+    }
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero {
+        background-attachment: scroll !important;
+    }
+
+    .animate-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 

@@ -3,13 +3,47 @@
 
 const translations = {
     fr: {
+        a11y: {
+            skip: "Aller au contenu"
+        },
         nav: {
             home: "Accueil",
             about: "À Propos",
             program: "Programme",
             venues: "Lieux",
             info: "Informations",
-            gallery: "Galerie"
+            gallery: "Galerie",
+            more: "Plus"
+        },
+        home: {
+            essentials: {
+                eventType: "Mariage & Baptême",
+                duration: "Trois jours de célébration"
+            },
+            shortcuts: {
+                program: {
+                    title: "Voir le programme",
+                    desc: "Le déroulé heure par heure du week-end"
+                },
+                venues: {
+                    title: "Les lieux",
+                    desc: "Hameau du Prat et église, avec itinéraires"
+                },
+                info: {
+                    title: "Préparer mon séjour",
+                    desc: "Hébergement, draps, tenue et météo"
+                },
+                gallery: {
+                    title: "Galerie & FAQ",
+                    desc: "Photos et questions fréquentes"
+                }
+            },
+            next: {
+                label: "Avant le grand jour",
+                during: "Le week-end a commencé ! Consultez le programme du jour.",
+                after: "Merci d'avoir célébré avec nous ! Retrouvez les photos dans la galerie.",
+                fallback: "Rendez-vous les 2, 3 et 4 octobre 2026 en Ardèche."
+            }
         },
         hero: {
             subtitle: "Nous nous marions !",
@@ -239,13 +273,47 @@ const translations = {
         }
     },
     es: {
+        a11y: {
+            skip: "Ir al contenido"
+        },
         nav: {
             home: "Inicio",
             about: "El evento",
             program: "Programa",
             venues: "Lugares",
             info: "Información",
-            gallery: "Galería"
+            gallery: "Galería",
+            more: "Más"
+        },
+        home: {
+            essentials: {
+                eventType: "Boda y Bautizo",
+                duration: "Tres días de celebración"
+            },
+            shortcuts: {
+                program: {
+                    title: "Ver el programa",
+                    desc: "El detalle hora por hora del fin de semana"
+                },
+                venues: {
+                    title: "Los lugares",
+                    desc: "Hameau du Prat e iglesia, con indicaciones"
+                },
+                info: {
+                    title: "Preparar mi estadía",
+                    desc: "Alojamiento, sábanas, atuendo y clima"
+                },
+                gallery: {
+                    title: "Galería y FAQ",
+                    desc: "Fotos y preguntas frecuentes"
+                }
+            },
+            next: {
+                label: "Antes del gran día",
+                during: "¡El fin de semana ha comenzado! Consulta el programa del día.",
+                after: "¡Gracias por celebrar con nosotros! Encuentra las fotos en la galería.",
+                fallback: "Nos vemos el 2, 3 y 4 de octubre de 2026 en Ardèche."
+            }
         },
         hero: {
             subtitle: "¡Nos casamos!",

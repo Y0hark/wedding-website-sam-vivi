@@ -1,0 +1,33 @@
+{
+    "name": "Samuel & Viviana - Mariage & Baptême",
+    "short_name": "S & V",
+    "description": "Mariage de Samuel & Viviana et baptême de Maiëlle & Noa - 2 au 4 octobre 2026, Ardèche",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#FFFFF0",
+    "theme_color": "#1B3A5F",
+    "lang": "fr",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "medias/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "medias/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "medias/icons/icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
