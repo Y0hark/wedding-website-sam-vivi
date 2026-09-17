@@ -218,9 +218,9 @@ const translations = {
                 iban_copied: "IBAN Copié !"
             },
             gift: {
-                title: "Pas de cagnotte",
-                desc: "Votre présence est le plus beau des cadeaux ! Nous ne mettons pas en place de cagnotte, mais si vous souhaitez nous aider à financer ce mariage (ou nous faire un cadeau), vous pouvez contribuer via PayPal.",
-                button: "Contribuer via PayPal"
+                title: "Cagnotte",
+                desc: "Votre présence est le plus beau des cadeaux ! Si vous souhaitez tout de même contribuer, nous avons mis en place une cagnotte commune pour le mariage et le baptême.",
+                button: "Participer à la cagnotte"
             },
             bedding: {
                 title: "Draps & Linge",
@@ -488,9 +488,9 @@ const translations = {
                 iban_copied: "¡IBAN Copiado!"
             },
             gift: {
-                title: "Sin colecta",
-                desc: "¡Su presencia es el mejor de los regalos! No organizamos ninguna colecta, pero si desean ayudarnos a financiar esta boda (o hacernos un regalo), pueden contribuir vía PayPal.",
-                button: "Contribuir vía PayPal"
+                title: "Colecta",
+                desc: "¡Su presencia es el mejor de los regalos! Si aun así desean contribuir, hemos organizado una colecta común para la boda y el bautizo.",
+                button: "Participar en la colecta"
             },
             bedding: {
                 title: "Sábanas y Ropa de Cama",
